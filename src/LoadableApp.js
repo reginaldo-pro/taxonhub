@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Loadable from "react-loadable";
 const LoadApp = Loadable({
-  loader: () => import("./App"),
+  loader: () => import("./speciesLink/validator"),
   loading() {
     return <div>Loading...</div>;
   },
