@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { hot } from "react-hot-loader";
 
+//Mockup para testar uma entrada valida na função validator.
 const DATA_MOCKUP_VALIDATOR = {
     "result" : [  
             { 
@@ -11,7 +12,10 @@ const DATA_MOCKUP_VALIDATOR = {
     ]
 }
 
+//Classe que faz a verificação dos campos em json.
 export class Validator extends Component {
+
+    //Metodo para verificação se existe os campos verbatimLongitude, verbatimLatitude e se não são nulos.
     verifyLatitudeLongitudeMun(props){
         if (("verbatimLongitude" in props) && ("verbatimLatitude" in props)){
             if (props["verbatimLongitude"] == " " || props["verbatimLongitude"] == "") return(false);
@@ -21,6 +25,7 @@ export class Validator extends Component {
         return(false);
     }
     
+    //Metodo para verificação se existe o campo scientificName e se não é nulo.
     verifyNameBinomiais(props){
         if ("scientificName" in props){
             if (props["scientificName"] == " " || props["scientificName"] == "") return(false);
@@ -30,6 +35,7 @@ export class Validator extends Component {
         return(false);
     }
     
+    //Metodo para verificação se existe os campos decimalLatitude, decimalLongitude e se não são nulos.
     verifyLatitudeLongitude(props){
         if (("decimalLatitude" in props) && ("decimalLongitude" in props)){
             if (props["decimalLatitude"] == " " || props["decimalLatitude"] == "" || props["decimalLatitude"] == "bloqueada") return(false);
@@ -39,6 +45,7 @@ export class Validator extends Component {
         return(false);
     }
     
+    //Metodo que retorna os json jsonValid com ocorrencias validas e jsonInvalid com ocorrencias invalidas.
     validateSpecies(props){
         const jsonValid = [], jsonInvalid = [];
         for(let item in props){
@@ -51,6 +58,7 @@ export class Validator extends Component {
         return ([jsonValid, jsonInvalid]);
     }
 
+    //Metodo que é chamado para criar a tela. 
     render() {
         const jsonResult = this.validateSpecies(DATA_MOCKUP_VALIDATOR["result"]);
         const amountValid = jsonResult[0].length, amountInvalid = jsonResult[1].length
