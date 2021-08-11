@@ -12,6 +12,11 @@ const DATA_MOCKUP_FALSE = {
     "record_id" : "", "modified" : "", "institutionCode" : "", "collectionCode" : "", "catalogNumber" : "", "basisOfRecord" : "", "kingdom" : "", "phylum" : "", "family" : "", "genus" : "", "specificEpithet" : "", "scientificName" : "", "scientificNameAuthorship" : "", "identifiedBy" : "", "yearIdentified" : "", "monthIdentified" : "", "dayIdentified" : "", "recordedBy" : "", "recordNumber" : "", "year" : "", "month" : "", "day" : "", "country" : "", "stateProvince" : "", "county" : "", "locality" : "", "verbatimLongitude": "","verbatimLatitude": "","decimalLongitude" : "bloqueada", "decimalLatitude" : "bloqueada", "coordinatePrecision" : "", "barcode" : "", "imagecode" : "", "geoFlag" : ""
 }
 
+//Mockup para testar uma entrada bloqueada para as funções auxiliares.
+const DATA_MOCKUP_BLOCK = { 
+    "record_id" : "1", "modified" : "2019-12-04 15:25:17-03", "institutionCode" : "PUCPR", "collectionCode" : "HUCP", "catalogNumber" : "7341", "basisOfRecord" : "S", "kingdom" : "Plantae", "phylum" : "Eudicotiledonea", "family" : "Lamiaceae", "genus" : "Cantinoa", "specificEpithet" : "althaeifolia", "scientificName" : "Cantinoa althaeifolia", "scientificNameAuthorship" : "(Pohl ex Benth.) Harley & J.F.B. Pastore.", "identifiedBy" : "Buchoski, M.G.", "yearIdentified" : "2018", "monthIdentified" : "08", "dayIdentified" : "27", "recordedBy" : "Silva, JM", "recordNumber" : "1095", "year" : "1992", "month" : "04", "day" : "13", "country" : "Brasil", "stateProvince" : "Paraná", "county" : "Curitiba", "locality" : "Jardim Petrópolis", "verbatimLongitude": "-20","verbatimLatitude": " ","decimalLongitude" : " ", "decimalLatitude" : "10", "coordinatePrecision" : "25180", "barcode" : "HUCP00012208", "imagecode" : "HUCP00012208", "geoFlag" : "auto"
+}
+
 //Mockup para testar uma entrada nula(faltando campos) para as funções auxiliares.
 const DATA_MOCKUP_NULL = { 
     "record_id" : "", "modified" : "", "institutionCode" : "", "collectionCode" : "", "catalogNumber" : "", "basisOfRecord" : "", "kingdom" : "", "phylum" : "", "family" : "", "genus" : "", "specificEpithet" : "","scientificNameAuthorship" : "", "identifiedBy" : "", "yearIdentified" : "", "monthIdentified" : "", "dayIdentified" : "", "recordedBy" : "", "recordNumber" : "", "year" : "", "month" : "", "day" : "", "country" : "", "stateProvince" : "", "county" : "", "locality" : "", "verbatimLongitude": "", "decimalLatitude" : "bloqueada", "coordinatePrecision" : "", "barcode" : "", "imagecode" : "", "geoFlag" : ""
@@ -65,8 +70,11 @@ describe('Função verifyLatitudeLongitude', () => {
     test('Entrada da função falsa', () => {
         expect(validator.verifyLatitudeLongitude(DATA_MOCKUP_FALSE)).toBe(false);
     });
-    test('Entrada da função falsa', () => {
+    test('Entrada da função nula', () => {
         expect(validator.verifyLatitudeLongitude(DATA_MOCKUP_NULL)).toBe(false);
+    });
+    test('Entrada da função bloqueada', () => {
+        expect(validator.verifyLatitudeLongitude(DATA_MOCKUP_BLOCK)).toBe(false);
     });
 });
 
@@ -78,7 +86,7 @@ describe('Função verifyNameBinomiais', () => {
     test('Entrada da função falsa', () => {
         expect(validator.verifyNameBinomiais(DATA_MOCKUP_FALSE)).toBe(false);
     });
-    test('Entrada da função falsa', () => {
+    test('Entrada da função nula', () => {
         expect(validator.verifyNameBinomiais(DATA_MOCKUP_NULL)).toBe(false);
     });
 });
@@ -91,8 +99,11 @@ describe('Função verifyLatitudeLongitudeMun', () => {
     test('Entrada da função falsa', () => {
         expect(validator.verifyLatitudeLongitudeMun(DATA_MOCKUP_FALSE)).toBe(false);
     });
-    test('Entrada da função falsa', () => {
+    test('Entrada da função nula', () => {
         expect(validator.verifyLatitudeLongitudeMun(DATA_MOCKUP_NULL)).toBe(false);
+    });
+    test('Entrada da função bloqueada', () => {
+        expect(validator.verifyLatitudeLongitudeMun(DATA_MOCKUP_BLOCK)).toBe(false);
     });
 });
 
