@@ -15,43 +15,49 @@ function multiDimensionalUnique(arr) {
 
 function validadeFile(filename) {
   return new Promise((resolve, reject) => {
-    var reader = new CsvReader();
-    var output = [];
+    try {
+      var reader = new CsvReader();
+      var output = [];
 
-    reader.on('row', data => {
-      // data is an array of data. You should
-      // concatenate it to the data set to compile it.
+      reader.on('row', data => {
+        // data is an array of data. You should
+        // concatenate it to the data set to compile it.
 
-      var format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/
+        var format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/
 
-      // Pula linhas em branco
-      if (data.length > 0) {
-        data = data[0].split(' ');
+        // Pula linhas em branco
+        if (data.length > 0) {
+          data = data[0].split(' ');
 
-        // Retorna erro se algum elemento conter caracteres inválidos
-        if (format.test(data[0]) == true || format.test(data[1]) == true) throw new Error('File contains samples with illegal characters')
+          // Retorna erro se algum elemento conter caracteres inválidos
+          if (format.test(data[0]) == true || format.test(data[1]) == true) reject('File contains samples with illegal characters.')
 
-        // Retorna erro se algum dos elementos não for binário
-        if (data.length != 2) throw new Error('File contains non-binary samples')
+          // Retorna erro se algum dos elementos não for binário
+          if (data.length != 2) reject('File contains non-binary samples.')
 
-        output = output.concat([data]);
-      }
-    });
+          output = output.concat([data]);
+        }
+      });
 
-    reader.on('done', () => {
-      // output will be the compiled data set.
-      if (output.length == 0) {
-        throw new Error('Empty file.')
-      } else {
-        // Remove duplicatas
-        output = multiDimensionalUnique(output)
-        resolve(output);
-      }
-    });
+      reader.on('done', () => {
+        // output will be the compiled data set.
+        
+        // Se o arquivo for vazio, retorna erro
+        if (output.length == 0) {
+          reject('File is empty.')
+        } else {
+          // Remove duplicatas
+          output = multiDimensionalUnique(output)
+          resolve(output);
+        }
+      });
 
-    reader.on('error', err => reject(err));
+      reader.on('error', err => reject(err));
 
-    reader.read(filename);
+      reader.read(filename);
+    } catch (error) {
+      return error
+    }
   })
 }
 
