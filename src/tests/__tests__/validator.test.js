@@ -22,6 +22,13 @@ const DATA_MOCKUP_NULL = {
     "record_id" : "", "modified" : "", "institutionCode" : "", "collectionCode" : "", "catalogNumber" : "", "basisOfRecord" : "", "kingdom" : "", "phylum" : "", "family" : "", "genus" : "", "specificEpithet" : "","scientificNameAuthorship" : "", "identifiedBy" : "", "yearIdentified" : "", "monthIdentified" : "", "dayIdentified" : "", "recordedBy" : "", "recordNumber" : "", "year" : "", "month" : "", "day" : "", "country" : "", "stateProvince" : "", "county" : "", "locality" : "", "verbatimLongitude": "", "decimalLatitude" : "bloqueada", "coordinatePrecision" : "", "barcode" : "", "imagecode" : "", "geoFlag" : ""
 }
 
+
+//Mockup para testar uma entrada void para as funções auxiliares.
+const DATA_MOCKUP_VOID = null
+
+//Mockup para testar uma entrada empty para as funções auxiliares.
+const DATA_MOCKUP_EMPTY = {}
+
 //Mockup para testar uma entrada valida na função validator.
 const DATA_MOCKUP_VALIDATOR_TRUE = {
     "result" : [  
@@ -47,6 +54,7 @@ const DATA_MOCKUP_VALIDATOR_FALSE = {
 //Função que testa o retorno da função validateSpecies.
 function testValidateSpeciesLength(data){
     const verify = validator.validateSpecies(data);
+    if (verify == null) return(null);
     if (verify[0].length == 2 && verify[1].length == 0){
         return true;
     }
@@ -114,6 +122,12 @@ describe('Função testValidateSpeciesLength', () => {
     });
     test('Entrada da função falsa, pois existe um trinomio', () => {
         expect(testValidateSpeciesLength(DATA_MOCKUP_VALIDATOR_FALSE["result"])).toBe(false);
+    });
+    test('Entrada da função void', () => {
+        expect(testValidateSpeciesLength(DATA_MOCKUP_VOID)).toBe(null);
+    });
+    test('Entrada da função void', () => {
+        expect(testValidateSpeciesLength(DATA_MOCKUP_EMPTY)).toBe(null);
     });
 });
 

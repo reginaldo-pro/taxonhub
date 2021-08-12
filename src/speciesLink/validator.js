@@ -49,6 +49,8 @@ export class Validator extends Component {
     
     //Metodo que retorna os json jsonValid com ocorrencias validas e jsonInvalid com ocorrencias invalidas.
     validateSpecies(props){
+        if (props == null || Object.keys(props).length < 1) return (null);
+
         const jsonValid = [], jsonInvalid = [];
         for(let item in props){
             if (!this.verifyLatitudeLongitude(props[item]) || !this.verifyLatitudeLongitudeMun(props[item]) || !this.verifyNameBinomiais(props[item])){
