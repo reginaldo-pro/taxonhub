@@ -1,0 +1,25 @@
+jest.mock('node-fetch');
+import fetch from 'node-fetch';
+import {SpeciesLinkApi} from "../../speciesLink/SpeciesLinkApi.js"
+
+const api = new SpeciesLinkApi();
+
+const MOCK_DATA_TRUE = (([
+            "Eichhornia azurea"
+            ,"Cantinoa althaeifolia"
+            ]));
+
+const MOCK_DATA_FALSE = (([ "" ]))
+
+
+function testApiValid(data){
+    const jsonResult= api.searchSpeciesAPI(data);
+    if (jsonResult.length > 1) return true;
+    return false;
+}
+
+describe('Função searchSpeciesAPI', () => {
+    test('Entrada da função verdadeira', () => {
+      expect(testApiValid(MOCK_DATA_TRUE)).toBe(true);
+    });
+});
