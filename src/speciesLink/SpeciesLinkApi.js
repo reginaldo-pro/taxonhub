@@ -2,15 +2,16 @@ import React, { Component } from "react";
 import { hot } from "react-hot-loader";
 import axios from 'axios';
 
-function api2(lista) {
+function searchSpeciesAPI(lista) {
     const param = lista.join("/")
-    console.log("OIA A LISTAAAA ",lista)
-    return fetch(`https://cors-anywhere.herokuapp.com/https://api.splink.org.br/records/ScientificName/${param}/Synonyms/flora2020/Format/JSON`)
+    console.log("LISTA",lista)
+    return fetch(`https://cors-aanywhere.herokuapp.com/https://api.splink.org.br/records/ScientificName/${param}/Synonyms/flora2020/Format/JSON`)
     .then(response => {
         return response.json()
-    })
+    }).catch(error => {
+            return null;
+    });
 }
-
 
 const mockData = (([
             "Eichhornia azurea"
@@ -61,15 +62,17 @@ class SpeciesLinkApi extends Component {
             })
             const start = i * 5;
             const end = start + 5;
+            //mockData = Lista de especies
             const list = mockData.slice(start, end);
-            if(list.length == 0){
+
+            if(list.length == 0 || this.state.error != null){
               this.setState({
                 isLoaded : true
                 })
               return ;
             }
 
-            api2(list)
+            let a = searchSpeciesAPI(list)
                 .then(data => {
                     const result = this.state.items.concat(data.result)
 
@@ -79,9 +82,12 @@ class SpeciesLinkApi extends Component {
 
                     getPages(i+1)
                 })
-            .catch(error => { this.setState({error : error.message}); })
-
+            .catch(error => { 
+                this.setState({error : error.message}); 
+                return null;
+            })
           };
+
           const length = mockData.length;
           const chunks = Math.ceil(length / 5);
           this.setState({
