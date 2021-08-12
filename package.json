@@ -35,7 +35,7 @@
       "category": "Science",
       "icon": "./build/favicon.ico"
     },
-    "windows":{
+    "windows": {
       "target": "nsis",
       "category": "Science",
       "icon": "./build/favicon.ico"
