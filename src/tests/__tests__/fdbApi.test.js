@@ -78,15 +78,15 @@ describe('Teste pesquisando com a api com o nome cientifico: test', () => {
         let resultado = [];
 
         // primeiro busco pelo termo: 'test' para comparar com os resultados esperados
-        getTaxon('test', (data) => { 
-            resultado = data 
-        
+        getTaxon('test', (data) => {
+            resultado = data
+
             // verificação: SUCESS
             expect(resultado.sucess).toBe(taxonNameTest.sucess);
-    
+
             // verificação: STATUS
             expect(resultado.status).toBe(taxonNameTest.status);
-    
+
             // verificação: NOME ACEITO 1
             expect(resultado.result[0]["NOME ACEITO"][0].taxonid).toBe(taxonNameTest.result[0]["NOME ACEITO"][0].taxonid);
             expect(resultado.result[0]["NOME ACEITO"][0].family).toBe(taxonNameTest.result[0]["NOME ACEITO"][0].family);
@@ -100,7 +100,7 @@ describe('Teste pesquisando com a api com o nome cientifico: test', () => {
             expect(resultado.result[0]["NOME ACEITO"][0].higherclassification).toBe(taxonNameTest.result[0]["NOME ACEITO"][0].higherclassification);
             expect(resultado.result[0]["NOME ACEITO"][0].source).toBe(taxonNameTest.result[0]["NOME ACEITO"][0].source);
             expect(resultado.result[0]["NOME ACEITO"][0].references).toBe(taxonNameTest.result[0]["NOME ACEITO"][0].references);
-    
+
             // verificação: NOME ACEITO 2 dev/#16
             expect(resultado.result[1]["NOME ACEITO"][0].taxonid).toBe(taxonNameTest.result[1]["NOME ACEITO"][0].taxonid);
             expect(resultado.result[1]["NOME ACEITO"][0].family).toBe(taxonNameTest.result[1]["NOME ACEITO"][0].family);
@@ -114,7 +114,7 @@ describe('Teste pesquisando com a api com o nome cientifico: test', () => {
             expect(resultado.result[1]["NOME ACEITO"][0].higherclassification).toBe(taxonNameTest.result[1]["NOME ACEITO"][0].higherclassification);
             expect(resultado.result[1]["NOME ACEITO"][0].source).toBe(taxonNameTest.result[0]["NOME ACEITO"][1].source);
             expect(resultado.result[1]["NOME ACEITO"][0].references).toBe(taxonNameTest.result[0]["NOME ACEITO"][1].references);
-    
+
             // verificação: RESULT 1
             expect(resultado.result[0].taxonid).toBe(taxonNameTest.result[0].taxonid);
             expect(resultado.result[0].family).toBe(taxonNameTest.result[0].family);
@@ -130,7 +130,7 @@ describe('Teste pesquisando com a api com o nome cientifico: test', () => {
             expect(resultado.result[0].references).toBe(taxonNameTest.result[0].references);
             expect(resultado.result[0].acceptednameusageid).toBe(taxonNameTest.result[0].acceptednameusageid);
             expect(resultado.result[0].modified).toBe(taxonNameTest.result[0].modified);
-    
+
             // verificação: RESULT 2
             expect(resultado.result[1].taxonid).toBe(taxonNameTest.result[1].taxonid);
             expect(resultado.result[1].family).toBe(taxonNameTest.result[1].family);
@@ -162,14 +162,14 @@ describe('Teste pesquisando com a api com o nome cientifico: null', () => {
         let resultado = [];
 
         // primeiro busco pelo termo: null para comparar com os resultados esperados
-        getTaxon(null, (data) => { 
+        getTaxon(null, (data) => {
             resultado = data
             // verificação: SUCESS
             expect(resultado.sucess).toBe(taxonNameNull.sucess);
-    
+
             // verificação: result
             expect(resultado.result).toBe(taxonNameNull.result);
-    
+
             // verificação: STATUS
             expect(resultado.status).toBe(taxonNameNull.status);
         });
@@ -186,7 +186,7 @@ describe(`Teste pesquisando com a api com o nome cientifico: ''`, () => {
         let resultado = [];
 
         // primeiro busco pelo termo: null para comparar com os resultados esperados
-        getTaxon('', (data) => { 
+        getTaxon('', (data) => {
             resultado = data
             // verificação: STATUS
             expect(resultado.status).toBe(taxonNameEmpty.status);
@@ -206,17 +206,17 @@ describe('Teste pesquisando com a api com o nome cientifico: 98', () => {
         let resultado = [];
 
         // primeiro busco pelo termo: null para comparar com os resultados esperados
-        getTaxon(98, (data) => { 
+        getTaxon(98, (data) => {
             resultado = data
             // verificação: SUCESS
             expect(resultado.sucess).toBe(taxonNameNumber.sucess);
-    
+
             // verificação: result
             expect(resultado.result).toBe(taxonNameNumber.result);
-    
+
             // verificação: STATUS
             expect(resultado.status).toBe(taxonNameNumber.status);
-         });
+        });
 
     });
 });
@@ -232,14 +232,14 @@ describe(`Teste pesquisando com a api com o nome cientifico: 'A98A'`, () => {
         let resultado = [];
 
         // primeiro busco pelo termo: null para comparar com os resultados esperados
-        getTaxon('A98A', (data) => { 
-            resultado = data 
+        getTaxon('A98A', (data) => {
+            resultado = data
             // verificação: SUCESS
             expect(resultado.sucess).toBe(taxonNameNumberLetter.sucess);
-    
+
             // verificação: result
             expect(resultado.result).toBe(taxonNameNumberLetter.result);
-    
+
             // verificação: STATUS
             expect(resultado.status).toBe(taxonNameNumberLetter.status);
         });
@@ -258,14 +258,14 @@ describe(`Teste pesquisando com a api com o nome cientifico: ';'`, () => {
         let resultado = [];
 
         // primeiro busco pelo termo: ';' para comparar com os resultados esperados
-        getTaxon(';', (data) => { 
-            resultado = data 
+        getTaxon(';', (data) => {
+            resultado = data
             // verificação: SUCESS
             expect(resultado.sucess).toBe(taxonNameSpecialLetter.sucess);
-    
+
             // verificação: result
             expect(resultado.result).toBe(taxonNameSpecialLetter.result);
-    
+
             // verificação: STATUS
             expect(resultado.status).toBe(taxonNameSpecialLetter.status);
         });
@@ -284,14 +284,14 @@ describe(`Teste pesquisando com a api com o nome cientifico: 'Lorem ipsum dolor 
         let resultado = [];
 
         // primeiro busco pelo termo: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis ultricies nisi, sed dignissim ante. Cras et molestie eros, in consectetur magna. Vivamus a dui quis lorem ullamcorper mollis. Duis condimentum libero sit amet laoreet varius. Nullam pharetra nunc a dolor feugiat sagittis. Maecenas pharetra, est sed eleifend eleifend, enim metus laoreet quam, quis vehicula libero mi sit amet augue. Maecenas ullamcorper justo vitae efficitur scelerisque. Pellentesque suscipit dignissim odio sed posuere.Integer pellentesque, velit vel tincidunt tristique, massa enim suscipit libero, eget bibendum sem est in tortor. Pellentesque sed nisl urna. Vivamus dictum risus a massa pharetra, dapibus tincidunt turpis rhoncus. Aenean elit mi, fermentum in nisl non, aliquet aliquet enim. Vestibulum aliquet, dolor ut ultricies dignissim, odio sem aliquam risus, in congue mi enim vel tellus. Vestibulum vehicula auctor hendrerit. Nam consequat mollis tellus sed lobortis.' para comparar com os resultados esperados
-        getTaxon('Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis ultricies nisi, sed dignissim ante. Cras et molestie eros, in consectetur magna. Vivamus a dui quis lorem ullamcorper mollis. Duis condimentum libero sit amet laoreet varius. Nullam pharetra nunc a dolor feugiat sagittis. Maecenas pharetra, est sed eleifend eleifend, enim metus laoreet quam, quis vehicula libero mi sit amet augue. Maecenas ullamcorper justo vitae efficitur scelerisque. Pellentesque suscipit dignissim odio sed posuere.Integer pellentesque, velit vel tincidunt tristique, massa enim suscipit libero, eget bibendum sem est in tortor. Pellentesque sed nisl urna. Vivamus dictum risus a massa pharetra, dapibus tincidunt turpis rhoncus. Aenean elit mi, fermentum in nisl non, aliquet aliquet enim. Vestibulum aliquet, dolor ut ultricies dignissim, odio sem aliquam risus, in congue mi enim vel tellus. Vestibulum vehicula auctor hendrerit. Nam consequat mollis tellus sed lobortis.', (data) => { 
-            resultado = data 
+        getTaxon('Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis ultricies nisi, sed dignissim ante. Cras et molestie eros, in consectetur magna. Vivamus a dui quis lorem ullamcorper mollis. Duis condimentum libero sit amet laoreet varius. Nullam pharetra nunc a dolor feugiat sagittis. Maecenas pharetra, est sed eleifend eleifend, enim metus laoreet quam, quis vehicula libero mi sit amet augue. Maecenas ullamcorper justo vitae efficitur scelerisque. Pellentesque suscipit dignissim odio sed posuere.Integer pellentesque, velit vel tincidunt tristique, massa enim suscipit libero, eget bibendum sem est in tortor. Pellentesque sed nisl urna. Vivamus dictum risus a massa pharetra, dapibus tincidunt turpis rhoncus. Aenean elit mi, fermentum in nisl non, aliquet aliquet enim. Vestibulum aliquet, dolor ut ultricies dignissim, odio sem aliquam risus, in congue mi enim vel tellus. Vestibulum vehicula auctor hendrerit. Nam consequat mollis tellus sed lobortis.', (data) => {
+            resultado = data
             // verificação: SUCESS
             expect(resultado.sucess).toBe(taxonNameLarge.sucess);
-    
+
             // verificação: result
             expect(resultado.result).toBe(taxonNameLarge.result);
-    
+
             // verificação: STATUS
             expect(resultado.status).toBe(taxonNameLarge.status);
         });
