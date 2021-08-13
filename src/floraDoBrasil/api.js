@@ -14,17 +14,19 @@ function FDBApi(speciesName, callback){
     xhr.onload = function () { 
         // caso de tudo certo com a requisicao
         if((xhr.readyState == 0 || xhr.readyState == 4) && xhr.status == 200){
+            //console.log('Resposta API sucess: ', JSON.parse(this.responseText));
+            
             // passo a string para json e crio um atributo chamado status
             let response = JSON.parse(this.responseText);
             response.status = xhr.status;
             
             // retorno a string da resposta
-            console.log('Resposta API sucess: ', response);
             callback(JSON.stringify(response));
             
-            // caso a requisicao tenha falhado
+        // caso a requisicao tenha falhado
         } else if (xhr.status != 200) {
-            console.log('Resposta API error: ', xhr);
+            //console.log('Resposta API error: ', xhr);
+
             // crio e envio uma string com apenas o atributo de status
             callback(JSON.stringify({status: xhr.status}));
         }

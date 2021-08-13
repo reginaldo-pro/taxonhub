@@ -101,7 +101,7 @@ describe('Teste pesquisando com a api com o nome cientifico: test', () => {
             expect(resultado.result[0]["NOME ACEITO"][0].source).toBe(taxonNameTest.result[0]["NOME ACEITO"][0].source);
             expect(resultado.result[0]["NOME ACEITO"][0].references).toBe(taxonNameTest.result[0]["NOME ACEITO"][0].references);
     
-            // verificação: NOME ACEITO 2
+            // verificação: NOME ACEITO 2 dev/#16
             expect(resultado.result[1]["NOME ACEITO"][0].taxonid).toBe(taxonNameTest.result[1]["NOME ACEITO"][0].taxonid);
             expect(resultado.result[1]["NOME ACEITO"][0].family).toBe(taxonNameTest.result[1]["NOME ACEITO"][0].family);
             expect(resultado.result[1]["NOME ACEITO"][0].genus).toBe(taxonNameTest.result[1]["NOME ACEITO"][0].genus);
