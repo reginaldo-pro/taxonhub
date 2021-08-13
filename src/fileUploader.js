@@ -1,5 +1,6 @@
 const CsvReader = require('promised-csv');
 
+
 function multiDimensionalUnique(arr) {
   var uniques = [];
   var itemsFound = {};
@@ -29,13 +30,16 @@ function validadeFile(filename) {
         if (data.length > 0) {
           data = data[0].split(' ');
 
-          // Retorna erro se algum elemento conter caracteres inválidos
-          if (format.test(data[0]) == true || format.test(data[1]) == true) reject('File contains samples with illegal characters.')
-
           // Retorna erro se algum dos elementos não for binário
           if (data.length != 2) reject('File contains non-binary samples.')
 
-          output = output.concat([data]);
+          // Retorna erro se algum elemento conter caracteres inválidos
+          if (format.test(data[0]) == true || format.test(data[1]) == true) reject('File contains samples with illegal characters.')
+          
+          // Transforma segunda string em uma string lower case
+          data[1] = data[1].toLowerCase()
+
+          output = output.concat([data])
         }
       });
 
@@ -55,6 +59,7 @@ function validadeFile(filename) {
       reader.on('error', err => reject(err));
 
       reader.read(filename);
+
     } catch (error) {
       return error
     }

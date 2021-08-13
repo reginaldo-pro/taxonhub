@@ -18,6 +18,11 @@ describe('Teste de diferentes CSVs de entrada', () => {
     expect(result).toStrictEqual([["Ananas", "comosus"], ["Euterpe", "oleracea"]]);
   });
 
+  test("Enviando um CSV com string Uper Case no segundo nome", async () => {
+    const result = await fileUploader.validadeFile('./utils/taxon_upercase.csv')
+    expect(result).toStrictEqual([["Ananas", "comosus"], ["Euterpe", "oleracea"]]);
+  });
+
   test('Enviando um CSV vazio', () => {
     fileUploader.validadeFile('./utils/taxon_empty.csv')
     .then((result) => {
