@@ -1,38 +1,48 @@
+import "dotenv/config";
 import axios from "axios";
 import Papa from "papaparse";
 
-const isBlank = (str) => (!str || /^\s*$/.test(str))
+const isBlank = (str) => !str || /^\s*$/.test(str);
 
 const searchSpecies = async (speciesName) => {
-  
-  if(!isBlank(speciesName)){
-    const searchUrl = `http://www.theplantlist.org/tpl1.1/search?q=${speciesName}&csv=true`;
-  
+  if (!isBlank(speciesName)) {
     await axios
-      .get(searchUrl)
+      .get(process.env.TPL_SEARCH_URL, {
+        params: {
+          q: speciesName,
+          csv: true,
+        },
+        timeout: 10000
+      })
       .then((response) => {
         const parsedSearch = Papa.parse(response.data, {
           header: true,
           dynamicTyping: true,
-          skipEmptyLines: true
+          skipEmptyLines: true,
         });
-  
-        const result = parsedSearch.data.map( searchRow => {
+
+        const formattedSearch = parsedSearch.data.map((searchRow) => {
           return {
-            name: [searchRow["Genus"], searchRow["Species"], searchRow["Infraspecific rank"], searchRow["Infraspecific epithet"]].filter(Boolean).join(' '),
+            name: [
+              searchRow["Genus"],
+              searchRow["Species"],
+              searchRow["Infraspecific rank"],
+              searchRow["Infraspecific epithet"],
+            ]
+              .filter(Boolean)
+              .join(" "),
             status: searchRow["Taxonomic status in TPL"],
             confidencLevel: searchRow["Confidence level"],
-            source: searchRow["Source"]
-          }
-        })
-  
-        console.log(result);
+            source: searchRow["Source"],
+          };
+        });
+
+        console.log(formattedSearch);
       })
       .catch((err) => {
-        throw new Error(err);
+        console.log(err.toJSON());
       });
-
   }
 };
 
-searchSpecies("Ocimum basilicum")
+searchSpecies("Ocimum basilicum");
