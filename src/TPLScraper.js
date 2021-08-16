@@ -1,22 +1,21 @@
-import "dotenv/config";
-import axios from "axios";
-import Papa from "papaparse";
+import axios from 'axios';
+import Papa from 'papaparse';
 
 /**
- * Checks if given string is blank (empty or composed with only whitespaces) 
+ * Checks if given string is blank (empty or composed with only whitespaces)
  * @param  {String} str String to check
  * @returns {Boolean} Result of the check in boolean format
  */
-const isBlank = (str) => !str || /^\s*$/.test(str);
+const isBlank = (str) => { return !str || /^\s*$/.test(str); };
 
 /**
  * Get the search result of a plant species in a plain-text CSV table from the The Plant List website
  * @param  {String} speciesName Name of a plant species
- * @returns {String} A plain-text CSV table containing the data searched 
+ * @returns {String} A plain-text CSV table containing the data searched
  */
 const getSearchSpeciesData = async (speciesName) => {
-  return await axios
-    .get(process.env.TPL_SEARCH_URL, {
+  return axios
+    .get('http://www.theplantlist.org/tpl1.1/search', {
       params: {
         q: speciesName,
         csv: true,
@@ -29,7 +28,7 @@ const getSearchSpeciesData = async (speciesName) => {
     .catch((error) => {
       if (error.response) {
         throw new Error(
-          `Website response error with status: ${error.response.status}`
+          `Website response error with status: ${error.response.status}`,
         );
       } else if (error.request) {
         throw new Error(`Website request error: ${error.request}`);
@@ -45,16 +44,20 @@ const getSearchSpeciesData = async (speciesName) => {
  * @returns {Array} Data parsed to an array of objects
  */
 const parseSpeciesData = (sepeciesData) => {
-  const parsed = Papa.parse(sepeciesData, {
-    header: true,
-    dynamicTyping: true,
-    skipEmptyLines: true,
-  });
+  try {
+    const parsed = Papa.parse(sepeciesData, {
+      header: true,
+      dynamicTyping: true,
+      skipEmptyLines: true,
+    });
 
-  if (Object.keys(parsed.errors).length !== 0) {
-    throw new Error("Error in parsing data received from the website");
-  } else {
-    return parsed.data;
+    if (Object.keys(parsed.errors).length !== 0) {
+      throw new Error('Incorrect CSV');
+    } else {
+      return parsed.data;
+    }
+  } catch (error) {
+    throw new Error(`Parsing data error: ${error.message}`);
   }
 };
 
@@ -72,26 +75,24 @@ const searchSpecies = async (speciesName) => {
       const formattedSearch = parsedData.map((searchRow) => {
         return {
           name: [
-            searchRow["Genus"],
-            searchRow["Species"],
-            searchRow["Infraspecific rank"],
-            searchRow["Infraspecific epithet"],
+            searchRow.Genus,
+            searchRow.Species,
+            searchRow['Infraspecific rank'],
+            searchRow['Infraspecific epithet'],
           ]
             .filter(Boolean)
-            .join(" "),
-          status: searchRow["Taxonomic status in TPL"],
-          confidencLevel: searchRow["Confidence level"],
-          source: searchRow["Source"],
+            .join(' '),
+          status: searchRow['Taxonomic status in TPL'],
+          confidencLevel: searchRow['Confidence level'],
+          source: searchRow.Source,
         };
       });
 
       return formattedSearch;
-
     } catch (error) {
-     throw new Error(error)
+      throw new Error(error);
     }
-  }
-  else throw new Error("A species name is required.")
+  } else throw new Error('A species name is required');
 };
 
 export default searchSpecies;
