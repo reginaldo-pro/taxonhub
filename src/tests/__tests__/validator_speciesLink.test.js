@@ -1,4 +1,4 @@
-import {Validator} from "../../speciesLink/validator";
+import {Validator} from "../../speciesLink/validator_speciesLink";
 
 const validator = new Validator();
 
