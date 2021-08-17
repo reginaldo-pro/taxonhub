@@ -20,6 +20,7 @@ export async function searchSpeciesList(speciesList) {
   } catch (e) {
     throw new Error('error');
   } finally {
+    // eslint-disable-next-line no-unsafe-finally
     return arraySpecies;
   }
 }
