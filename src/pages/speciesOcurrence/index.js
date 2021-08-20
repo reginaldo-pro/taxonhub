@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 class SpecieValidation extends Component {
   render() {
     return (
-      <div className="speciesValidation">
+      <div className="speciesScreen">
         <nav id="menu">
           <ul>
             <li>
@@ -15,7 +15,11 @@ class SpecieValidation extends Component {
             </li>
           </ul>
         </nav>
-        <h1>Inclua o CSV a baixo para encontrar as Ocorrências das espécies:</h1>
+        <div className="speciesScreenTitle">
+
+          <h1>Inclua o CSV a baixo para encontrar as Ocorrências das espécies:</h1>
+
+        </div>
       </div>
     );
   }

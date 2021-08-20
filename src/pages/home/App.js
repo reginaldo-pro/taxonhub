@@ -15,8 +15,7 @@ class App extends Component {
     };
     render() {
         return (
-            <div className="App">
-                <h1>Bem vindo ao Taxonhub, selecione uma opção:</h1>
+            <div className="speciesScreen">
                 <nav id="menu">
                     <ul>
                         <li>
@@ -28,7 +27,11 @@ class App extends Component {
                         <li><a href="#">Documentação</a></li>
                     </ul>
                 </nav>
+                <div className="speciesScreenTitle">
+                    <h1>Bem vindo ao Taxonhub 2.0!</h1>
+                </div>
             </div>
+           
         );
     }
 }
