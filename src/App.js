@@ -15,9 +15,14 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <h1>I'm configuring setting up Webpack!!!</h1>
-                <p>{`The count now is: ${this.state.counter}`}</p>
-                <button onClick={this.handleClick}>Click me</button>
+                <h1>Bem vindo ao Taxonhub, selecione uma opção:</h1>
+                <nav id="menu">
+                    <ul>
+                        <li><a href="#">Ocorrências de especies</a></li>
+                        <li><a href="#">Validação de especies</a></li>
+                        <li><a href="#">Documentação</a></li>
+                    </ul>
+                </nav>
             </div>
         );
     }
