@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { hot } from "react-hot-loader";
 import '../../sass/app.scss';
+import {BrowserRouter,Link,Route,Switch} from "react-router-dom";
 
 class App extends Component {
     state = {
@@ -18,8 +19,12 @@ class App extends Component {
                 <h1>Bem vindo ao Taxonhub, selecione uma opção:</h1>
                 <nav id="menu">
                     <ul>
-                        <li><a href="#">Ocorrências de especies</a></li>
-                        <li><a href="#">Validação de especies</a></li>
+                        <li>
+                            <Link to="/species-validation">Ocorrências de especies</Link>
+                        </li>
+                        <li>
+                            <Link to="/species-ocurrence">Ocorrências de especies</Link>
+                        </li>
                         <li><a href="#">Documentação</a></li>
                     </ul>
                 </nav>
