@@ -11,6 +11,24 @@ body {
   height: 100vh;
 }
 
+.speciesOcurrence {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  background: rgba(rgb(47, 93, 20), 0.2);
+  height: 100vh;
+}
+
+.speciesValidation {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  background: rgba(rgb(47, 93, 20), 0.2);
+  height: 100vh;
+}
+
 #menu ul {
   padding: 0px;
   margin: 0px;

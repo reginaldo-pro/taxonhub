@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { hot } from "react-hot-loader";
-import './sass/app.scss';
+import '../../sass/app.scss';
 
 class App extends Component {
     state = {
