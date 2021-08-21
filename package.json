@@ -114,7 +114,9 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "electron-is-dev": "^1.1.0",
+    "promised-csv": "^1.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   }
