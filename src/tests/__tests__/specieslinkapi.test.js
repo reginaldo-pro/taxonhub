@@ -1,8 +1,9 @@
 import 'regenerator-runtime/runtime'
-import {searchSpecies} from '../../API/SpeciesLinkAPI';
+import SpeciesLinkAPI from '../../API/SpeciesLinkAPI';
 jest.setTimeout(30000);
+
 test('Testing a search for fun', async () => {
-  const result = await searchSpecies('Vochysia');
+  const result = await SpeciesLinkAPI.searchSpecies('Vochysia');
     //console.log('Resultado: ', result)
 });
 
