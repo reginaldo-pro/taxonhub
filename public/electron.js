@@ -33,18 +33,12 @@ const template = [
     label: 'Taxonhub',
     submenu: [
       {
-        label: 'Validar csv',
+        label: 'Home',
         click: async () => {
         //   const { shell } = electron;
         //   await shell.openExternal('https://electronjs.org');
         },
-      },
-      {
-        label: 'Listar ocorrências',
-        click: async () => {
-        //   const { shell } = electron;
-        //   await shell.openExternal('https://electronjs.org');
-        },
+
       },
 
       isMac ? { role: 'close' } : { role: 'quit' },
