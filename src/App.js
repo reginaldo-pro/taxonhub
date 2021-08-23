@@ -9,11 +9,6 @@ class App extends Component {
 
     handleClick = () => {
 
-        getTaxon('test',
-            (data) => {
-                console.log('Data: ', data);
-            });
-
         this.setState(prevState => {
             return { counter: prevState.counter + 1 };
         });
