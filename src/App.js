@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { hot } from "react-hot-loader";
 import './sass/app.scss';
-import { getTaxon } from './floraDoBrasil/api.js';
 
 class App extends Component {
     state = {
@@ -10,7 +9,7 @@ class App extends Component {
 
     handleClick = () => {
 
-        getTaxon('test', 
+        getTaxon('test',
             (data) => {
                 console.log('Data: ', data);
             });

@@ -1,173 +1,169 @@
-import searchSpecies from '../api/api';
-
-let nomeAceito1 = {
-    "taxonid": "4860",
-    "family": "Apocynaceae",
-    "genus": "Tabernaemontana",
-    "scientificname": "Tabernaemontana L.",
-    "specificepithet": null,
-    "infraspecificepithet": null,
-    "scientificnameauthorship": "L.",
-    "taxonomicstatus": "NOME_ACEITO",
-    "acceptednameusage": null,
-    "higherclassification": "Flora;Angiospermas;Apocynaceae Juss.;Tabernaemontana L.",
-    "source": "Koch, I.,Rapini, A.,Simões, A.O.,Kinoshita, L.S.,Spina, A.P.,Castello, A.C.D. 2015. Apocynaceae in Lista de Espécies da Flora do Brasil. Jardim Botânico do Rio de Janeiro. Disponivel&nbsp;em:&nbsp;&lt;<a href=" + "http://floradobrasil.jbrj.gov.br/jabot/floradobrasil/FB4860" + ">http://floradobrasil.jbrj.gov.br/jabot/floradobrasil/FB4860</a>&gt;.<BR>BFG. Growing knowledge: an overview of Seed Plant diversity in Brazil. Rodriguésia, v.66, n.4, p.1085-1113. 2015. (DOI: 10.1590/2175-7860201566411)",
-    "references": "http://reflora.jbrj.gov.br/reflora/listaBrasil/FichaPublicaTaxonUC/FichaPublicaTaxonUC.do?id=FB4860",
-
-}
-
-let result1 = {
-    "taxonid": "42081",
-    "family": "Apocynaceae",
-    "genus": "Testudipes",
-    "scientificname": "Testudipes Markgr.",
-    "specificepithet": null,
-    "infraspecificepithet": null,
-    "scientificnameauthorship": "Markgr.",
-    "taxonomicstatus": "SINONIMO",
-    "acceptednameusage": "Tabernaemontana L.",
-    "higherclassification": "Flora;Angiospermas;Apocynaceae Juss.;Testudipes Markgr.",
-    "source": "Koch, I.,Rapini, A.,Simões, A.O.,Kinoshita, L.S.,Spina, A.P.,Castello, A.C.D. 2015. Apocynaceae in Lista de Espécies da Flora do Brasil. Jardim Botânico do Rio de Janeiro. Disponivel&nbsp;em:&nbsp;&lt;<a href=" + "http://floradobrasil.jbrj.gov.br/jabot/floradobrasil/FB42081" + ">http://floradobrasil.jbrj.gov.br/jabot/floradobrasil/FB42081</a>&gt;.<BR>BFG. Growing knowledge: an overview of Seed Plant diversity in Brazil. Rodriguésia, v.66, n.4, p.1085-1113. 2015. (DOI: 10.1590/2175-7860201566411)",
-    "references": "http://reflora.jbrj.gov.br/reflora/listaBrasil/FichaPublicaTaxonUC/FichaPublicaTaxonUC.do?id=FB42081",
-    "acceptednameusageid": "4860",
-    "modified": "2009-11-18 06:48:43.99201",
-    "NOME ACEITO": [nomeAceito1]
-}
-
-let nomeAceito2 = {
-    "taxonid": "7372",
-    "family": "Dioscoreaceae",
-    "genus": "Dioscorea",
-    "scientificname": "Dioscorea L.",
-    "specificepithet": null,
-    "infraspecificepithet": null,
-    "scientificnameauthorship": "L.",
-    "taxonomicstatus": "NOME_ACEITO",
-    "acceptednameusage": null,
-    "higherclassification": "Flora;Angiospermas;Dioscoreaceae R.Br.;Dioscorea L.",
-    "source": "Kirizawa, M.,Xifreda, C.C.,Couto, R.,Araújo, D. 2015. Dioscoreaceae in Lista de Espécies da Flora do Brasil. Jardim Botânico do Rio de Janeiro. Disponivel&nbsp;em:&nbsp;&lt;<a href=" + "http://floradobrasil.jbrj.gov.br/jabot/floradobrasil/FB7372" + ">http://floradobrasil.jbrj.gov.br/jabot/floradobrasil/FB7372</a>&gt;.<BR>BFG. Growing knowledge: an overview of Seed Plant diversity in Brazil. Rodriguésia, v.66, n.4, p.1085-1113. 2015. (DOI: 10.1590/2175-7860201566411)KNUTH, R. 1924. Dioscoreaceae. In: Engler, A. (ed.), Das Pflazenr, 4 (43): 1-386.BARROSO, G. M., SUCRE, D., GUIMAR&amp;Atilde;ES, E. F., CARVALHO, L. F., VALENTE, M. C., SILVA, J. D., SILVA, J. B., ROSENTHAL, F. R. T., BARBOSA, G. M., BARTH, O. M. &amp;amp; BARBOSA, A. F. 1974. Flora da Guanabara: fam&amp;iacute;lia Dioscoreaceae. Sellowia 25: 9-256.Grisebach, H.A. 1824, Dioscoreaceae. In Flora brasiliensis (Martius, C.F.P. &amp;amp; Eichler, A.G. eds.) 3(1): 26-48.&amp;nbsp;Pedralli, G. 2004. Dioscore&amp;aacute;ceas. In Flora Ilustrada Catarinense.Itaja&amp;iacute;, Herb&amp;aacute;rio Barbosa Rodrigues. 83p.Sano, M.S., Almeida, S.P. &amp;amp; Ribeiro, J.F.(eds.).&amp;nbsp;2008. Cerrado: Ecologia e Flora. Bras&amp;iacute;lia,DF. Embrapa Informa&amp;ccedil;&amp;atilde;o Tecnol&amp;oacute;gica. v.2, pp. 689-692.&amp;nbsp;Kirizawa, M. &amp;amp; Xifreda, C.C. Flora da Mata Atl&amp;acirc;ntica.Xifreda, C.C. 1996. Dioscoreaceae. In Zuloaga, F.O. &amp;amp; Morrone, O. (eds.) Cat&amp;aacute;logo de las Plantas Vasculares de la Rep&amp;uacute;blica Argentina. I. Pteridophyta, Gymnospermae y Angiospermae (Monocotyledoneae). Monographs in Systematic Botany from the Missouri Bot. Gard. 60: 197-202.&amp;nbsp;Zuloaga, F.O., Morrone, O. &amp;amp; Belgrano, M. (eds.). 2008. Cat&amp;aacute;logo de las Plantas Vasculares del Cono Sur (Argentina, sur de Brasil, Chile, Paraguay y Uruguay.&amp;nbsp;Funk, V., Hollowell, T., Berry, P., Kelloff, C. &amp;amp; Alexander, S.N. 2007. Checklist of the Plants of the Guiana Shield. Contributions from the United States National Herbarium 55:1-3-104.",
-    "references": "http://reflora.jbrj.gov.br/reflora/listaBrasil/FichaPublicaTaxonUC/FichaPublicaTaxonUC.do?id=FB7372",
-}
-
-let result2 = {
-    "taxonid": "52873",
-    "family": "Dioscoreaceae",
-    "genus": "Testudinaria",
-    "scientificname": "Testudinaria Salisb. ex Burch.",
-    "specificepithet": null,
-    "infraspecificepithet": null,
-    "scientificnameauthorship": "Salisb. ex Burch.",
-    "taxonomicstatus": "SINONIMO",
-    "acceptednameusage": "Dioscorea L.",
-    "higherclassification": "Flora;Angiospermas;Dioscoreaceae R.Br.;Testudinaria Salisb. ex Burch.",
-    "source": "Kirizawa, M.,Xifreda, C.C.,Couto, R.,Araújo, D. 2015. Dioscoreaceae in Lista de Espécies da Flora do Brasil. Jardim Botânico do Rio de Janeiro. Disponivel&nbsp;em:&nbsp;&lt;<a href=" + "http://floradobrasil.jbrj.gov.br/jabot/floradobrasil/FB52873" + ">http://floradobrasil.jbrj.gov.br/jabot/floradobrasil/FB52873</a>&gt;.<BR>BFG. Growing knowledge: an overview of Seed Plant diversity in Brazil. Rodriguésia, v.66, n.4, p.1085-1113. 2015. (DOI: 10.1590/2175-7860201566411)",
-    "references": "http://reflora.jbrj.gov.br/reflora/listaBrasil/FichaPublicaTaxonUC/FichaPublicaTaxonUC.do?id=FB52873",
-    "acceptednameusageid": "7372",
-    "modified": "2014-09-29 12:14:06.274",
-    "NOME ACEITO": [nomeAceito2]
-}
+import getTaxon from '../../floraDoBrasil/FDBApi.js';
 
 let taxonNameTest = {
-    sucess: true,
-    result: [result1, result2],
-};
+    values: [
+        {
+            scientificname: 'Tabernaemontana flavicans Willd. ex Roem. & Schult.',
+            synonymsList:
+                [
+                    {
+                        "taxonid": "40869",
+                        "family": "Apocynaceae",
+                        "genus": "Anartia",
+                        "scientificname": "Anartia flavicans (Willd. ex Roem. & Schult.) Miers",
+                        "specificepithet": "flavicans",
+                        "infraspecificepithet": null,
+                        "scientificnameauthorship": "(Willd. ex Roem. & Schult.) Miers",
+                        "taxonomicstatus": "SINONIMO",
+                        "higherclassification": "Flora;Angiospermas;Apocynaceae Juss.;Anartia Miers;Anartia flavicans (Willd. ex Roem. & Schult.) Miers",
+                        "source": "Koch, I.,Rapini, A.,Simões, A.O.,Kinoshita, L.S.,Spina, A.P.,Castello, A.C.D. 2015. Apocynaceae in Lista de Espécies da Flora do Brasil. Jardim Botânico do Rio de Janeiro. Disponivel&nbsp;em:&nbsp;&lt;<a href=\"http://floradobrasil.jbrj.gov.br/jabot/floradobrasil/FB40869\">http://floradobrasil.jbrj.gov.br/jabot/floradobrasil/FB40869</a>&gt;.<BR>BFG. Growing knowledge: an overview of Seed Plant diversity in Brazil. Rodriguésia, v.66, n.4, p.1085-1113. 2015. (DOI: 10.1590/2175-7860201566411)",
+                        "references": "http://reflora.jbrj.gov.br/reflora/listaBrasil/FichaPublicaTaxonUC/FichaPublicaTaxonUC.do?id=FB40869"
+                    },
+                    {
+                        "taxonid": "40872",
+                        "family": "Apocynaceae",
+                        "genus": "Anartia",
+                        "scientificname": "Anartia oblongifolia (A.DC.) Markgr.",
+                        "specificepithet": "oblongifolia",
+                        "infraspecificepithet": null,
+                        "scientificnameauthorship": "(A.DC.) Markgr.",
+                        "taxonomicstatus": "SINONIMO",
+                        "higherclassification": "Flora;Angiospermas;Apocynaceae Juss.;Anartia Miers;Anartia oblongifolia (A.DC.) Markgr.",
+                        "source": "Koch, I.,Rapini, A.,Simões, A.O.,Kinoshita, L.S.,Spina, A.P.,Castello, A.C.D. 2015. Apocynaceae in Lista de Espécies da Flora do Brasil. Jardim Botânico do Rio de Janeiro. Disponivel&nbsp;em:&nbsp;&lt;<a href=\"http://floradobrasil.jbrj.gov.br/jabot/floradobrasil/FB40872\">http://floradobrasil.jbrj.gov.br/jabot/floradobrasil/FB40872</a>&gt;.<BR>BFG. Growing knowledge: an overview of Seed Plant diversity in Brazil. Rodriguésia, v.66, n.4, p.1085-1113. 2015. (DOI: 10.1590/2175-7860201566411)",
+                        "references": "http://reflora.jbrj.gov.br/reflora/listaBrasil/FichaPublicaTaxonUC/FichaPublicaTaxonUC.do?id=FB40872"
+                    },
+                    {
+                        "taxonid": "40870",
+                        "family": "Apocynaceae",
+                        "genus": "Anartia",
+                        "scientificname": "Anartia glabrata Miers",
+                        "specificepithet": "glabrata",
+                        "infraspecificepithet": null,
+                        "scientificnameauthorship": "Miers",
+                        "taxonomicstatus": "SINONIMO",
+                        "higherclassification": "Flora;Angiospermas;Apocynaceae Juss.;Anartia Miers;Anartia glabrata Miers",
+                        "source": "Koch, I.,Rapini, A.,Simões, A.O.,Kinoshita, L.S.,Spina, A.P.,Castello, A.C.D. 2015. Apocynaceae in Lista de Espécies da Flora do Brasil. Jardim Botânico do Rio de Janeiro. Disponivel&nbsp;em:&nbsp;&lt;<a href=\"http://floradobrasil.jbrj.gov.br/jabot/floradobrasil/FB40870\">http://floradobrasil.jbrj.gov.br/jabot/floradobrasil/FB40870</a>&gt;.<BR>BFG. Growing knowledge: an overview of Seed Plant diversity in Brazil. Rodriguésia, v.66, n.4, p.1085-1113. 2015. (DOI: 10.1590/2175-7860201566411)",
+                        "references": "http://reflora.jbrj.gov.br/reflora/listaBrasil/FichaPublicaTaxonUC/FichaPublicaTaxonUC.do?id=FB40870"
+                    },
+                    {
+                        "taxonid": "41045",
+                        "family": "Apocynaceae",
+                        "genus": "Bonafousia",
+                        "scientificname": "Bonafousia latiflora Miers",
+                        "specificepithet": "latiflora",
+                        "infraspecificepithet": null,
+                        "scientificnameauthorship": "Miers",
+                        "taxonomicstatus": "SINONIMO",
+                        "higherclassification": "Flora;Angiospermas;Apocynaceae Juss.;Bonafousia A.DC.;Bonafousia latiflora Miers",
+                        "source": "Koch, I.,Rapini, A.,Simões, A.O.,Kinoshita, L.S.,Spina, A.P.,Castello, A.C.D. 2015. Apocynaceae in Lista de Espécies da Flora do Brasil. Jardim Botânico do Rio de Janeiro. Disponivel&nbsp;em:&nbsp;&lt;<a href=\"http://floradobrasil.jbrj.gov.br/jabot/floradobrasil/FB41045\">http://floradobrasil.jbrj.gov.br/jabot/floradobrasil/FB41045</a>&gt;.<BR>BFG. Growing knowledge: an overview of Seed Plant diversity in Brazil. Rodriguésia, v.66, n.4, p.1085-1113. 2015. (DOI: 10.1590/2175-7860201566411)",
+                        "references": "http://reflora.jbrj.gov.br/reflora/listaBrasil/FichaPublicaTaxonUC/FichaPublicaTaxonUC.do?id=FB41045"
+                    },
+                    {
+                        "taxonid": "41054",
+                        "family": "Apocynaceae",
+                        "genus": "Bonafousia",
+                        "scientificname": "Bonafousia oblongifolia (A.DC.) Miers",
+                        "specificepithet": "oblongifolia",
+                        "infraspecificepithet": null,
+                        "scientificnameauthorship": "(A.DC.) Miers",
+                        "taxonomicstatus": "SINONIMO",
+                        "higherclassification": "Flora;Angiospermas;Apocynaceae Juss.;Bonafousia A.DC.;Bonafousia oblongifolia (A.DC.) Miers",
+                        "source": "Koch, I.,Rapini, A.,Simões, A.O.,Kinoshita, L.S.,Spina, A.P.,Castello, A.C.D. 2015. Apocynaceae in Lista de Espécies da Flora do Brasil. Jardim Botânico do Rio de Janeiro. Disponivel&nbsp;em:&nbsp;&lt;<a href=\"http://floradobrasil.jbrj.gov.br/jabot/floradobrasil/FB41054\">http://floradobrasil.jbrj.gov.br/jabot/floradobrasil/FB41054</a>&gt;.<BR>BFG. Growing knowledge: an overview of Seed Plant diversity in Brazil. Rodriguésia, v.66, n.4, p.1085-1113. 2015. (DOI: 10.1590/2175-7860201566411)",
+                        "references": "http://reflora.jbrj.gov.br/reflora/listaBrasil/FichaPublicaTaxonUC/FichaPublicaTaxonUC.do?id=FB41054"
+                    },
+                    {
+                        "taxonid": "41055",
+                        "family": "Apocynaceae",
+                        "genus": "Bonafousia",
+                        "scientificname": "Bonafousia olivacea (Müll.Arg.) Miers",
+                        "specificepithet": "olivacea",
+                        "infraspecificepithet": null,
+                        "scientificnameauthorship": "(Müll.Arg.) Miers",
+                        "taxonomicstatus": "SINONIMO",
+                        "higherclassification": "Flora;Angiospermas;Apocynaceae Juss.;Bonafousia A.DC.;Bonafousia olivacea (Müll.Arg.) Miers",
+                        "source": "Koch, I.,Rapini, A.,Simões, A.O.,Kinoshita, L.S.,Spina, A.P.,Castello, A.C.D. 2015. Apocynaceae in Lista de Espécies da Flora do Brasil. Jardim Botânico do Rio de Janeiro. Disponivel&nbsp;em:&nbsp;&lt;<a href=\"http://floradobrasil.jbrj.gov.br/jabot/floradobrasil/FB41055\">http://floradobrasil.jbrj.gov.br/jabot/floradobrasil/FB41055</a>&gt;.<BR>BFG. Growing knowledge: an overview of Seed Plant diversity in Brazil. Rodriguésia, v.66, n.4, p.1085-1113. 2015. (DOI: 10.1590/2175-7860201566411)",
+                        "references": "http://reflora.jbrj.gov.br/reflora/listaBrasil/FichaPublicaTaxonUC/FichaPublicaTaxonUC.do?id=FB41055"
+                    },
+                    {
+                        "taxonid": "41959",
+                        "family": "Apocynaceae",
+                        "genus": "Taberna",
+                        "scientificname": "Taberna disparifolia Miers",
+                        "specificepithet": "disparifolia",
+                        "infraspecificepithet": null,
+                        "scientificnameauthorship": "Miers",
+                        "taxonomicstatus": "SINONIMO",
+                        "higherclassification": "Flora;Angiospermas;Apocynaceae Juss.;Taberna Miers;Taberna disparifolia Miers",
+                        "source": "Koch, I.,Rapini, A.,Simões, A.O.,Kinoshita, L.S.,Spina, A.P.,Castello, A.C.D. 2015. Apocynaceae in Lista de Espécies da Flora do Brasil. Jardim Botânico do Rio de Janeiro. Disponivel&nbsp;em:&nbsp;&lt;<a href=\"http://floradobrasil.jbrj.gov.br/jabot/floradobrasil/FB41959\">http://floradobrasil.jbrj.gov.br/jabot/floradobrasil/FB41959</a>&gt;.<BR>BFG. Growing knowledge: an overview of Seed Plant diversity in Brazil. Rodriguésia, v.66, n.4, p.1085-1113. 2015. (DOI: 10.1590/2175-7860201566411)",
+                        "references": "http://reflora.jbrj.gov.br/reflora/listaBrasil/FichaPublicaTaxonUC/FichaPublicaTaxonUC.do?id=FB41959"
+                    },
+                    {
+                        "taxonid": "42024",
+                        "family": "Apocynaceae",
+                        "genus": "Tabernaemontana",
+                        "scientificname": "Tabernaemontana oblongifolia A.DC.",
+                        "specificepithet": "oblongifolia",
+                        "infraspecificepithet": null,
+                        "scientificnameauthorship": "A.DC.",
+                        "taxonomicstatus": "SINONIMO",
+                        "higherclassification": "Flora;Angiospermas;Apocynaceae Juss.;Tabernaemontana L.;Tabernaemontana oblongifolia A.DC.",
+                        "source": "Koch, I.,Rapini, A.,Simões, A.O.,Kinoshita, L.S.,Spina, A.P.,Castello, A.C.D. 2015. Apocynaceae in Lista de Espécies da Flora do Brasil. Jardim Botânico do Rio de Janeiro. Disponivel&nbsp;em:&nbsp;&lt;<a href=\"http://floradobrasil.jbrj.gov.br/jabot/floradobrasil/FB42024\">http://floradobrasil.jbrj.gov.br/jabot/floradobrasil/FB42024</a>&gt;.<BR>BFG. Growing knowledge: an overview of Seed Plant diversity in Brazil. Rodriguésia, v.66, n.4, p.1085-1113. 2015. (DOI: 10.1590/2175-7860201566411)",
+                        "references": "http://reflora.jbrj.gov.br/reflora/listaBrasil/FichaPublicaTaxonUC/FichaPublicaTaxonUC.do?id=FB42024"
+                    },
+                    {
+                        "taxonid": "42026",
+                        "family": "Apocynaceae",
+                        "genus": "Tabernaemontana",
+                        "scientificname": "Tabernaemontana olivacea Müll.Arg.",
+                        "specificepithet": "olivacea",
+                        "infraspecificepithet": null,
+                        "scientificnameauthorship": "Müll.Arg.",
+                        "taxonomicstatus": "SINONIMO",
+                        "higherclassification": "Flora;Angiospermas;Apocynaceae Juss.;Tabernaemontana L.;Tabernaemontana olivacea Müll.Arg.",
+                        "source": "Koch, I.,Rapini, A.,Simões, A.O.,Kinoshita, L.S.,Spina, A.P.,Castello, A.C.D. 2015. Apocynaceae in Lista de Espécies da Flora do Brasil. Jardim Botânico do Rio de Janeiro. Disponivel&nbsp;em:&nbsp;&lt;<a href=\"http://floradobrasil.jbrj.gov.br/jabot/floradobrasil/FB42026\">http://floradobrasil.jbrj.gov.br/jabot/floradobrasil/FB42026</a>&gt;.<BR>BFG. Growing knowledge: an overview of Seed Plant diversity in Brazil. Rodriguésia, v.66, n.4, p.1085-1113. 2015. (DOI: 10.1590/2175-7860201566411)",
+                        "references": "http://reflora.jbrj.gov.br/reflora/listaBrasil/FichaPublicaTaxonUC/FichaPublicaTaxonUC.do?id=FB42026"
+                    },
+                    {
+                        "taxonid": "40873",
+                        "family": "Apocynaceae",
+                        "genus": "Anartia",
+                        "scientificname": "Anartia olivacea (Müll.Arg.) Markgr.",
+                        "specificepithet": "olivacea",
+                        "infraspecificepithet": null,
+                        "scientificnameauthorship": "(Müll.Arg.) Markgr.",
+                        "taxonomicstatus": "SINONIMO",
+                        "higherclassification": "Flora;Angiospermas;Apocynaceae Juss.;Anartia Miers;Anartia olivacea (Müll.Arg.) Markgr.",
+                        "source": "Koch, I.,Rapini, A.,Simões, A.O.,Kinoshita, L.S.,Spina, A.P.,Castello, A.C.D. 2015. Apocynaceae in Lista de Espécies da Flora do Brasil. Jardim Botânico do Rio de Janeiro. Disponivel&nbsp;em:&nbsp;&lt;<a href=\"http://floradobrasil.jbrj.gov.br/jabot/floradobrasil/FB40873\">http://floradobrasil.jbrj.gov.br/jabot/floradobrasil/FB40873</a>&gt;.<BR>BFG. Growing knowledge: an overview of Seed Plant diversity in Brazil. Rodriguésia, v.66, n.4, p.1085-1113. 2015. (DOI: 10.1590/2175-7860201566411)",
+                        "references": "http://reflora.jbrj.gov.br/reflora/listaBrasil/FichaPublicaTaxonUC/FichaPublicaTaxonUC.do?id=FB40873"
+                    }
+                ],
+        }
+    ],
+}
 
-test('Teste pesquisando com a api com o nome cientifico: test', async () => {
-    const result = await searchSpecies('test');
+test('Teste pesquisando com a api com o nome cientifico: Tabernaemontana flavicans Willd. ex Roem. & Schult.', async () => {
+    const result = await getTaxon('Tabernaemontana flavicans Willd. ex Roem. & Schult.');
+    //console.log(taxonNameTest);scientificname
 
-    // verificação: NOME ACEITO 1
-    expect(result.result[0]["NOME ACEITO"][0].taxonid).toBe(taxonNameTest.result[0]["NOME ACEITO"][0].taxonid);
-    expect(result.result[0]["NOME ACEITO"][0].family).toBe(taxonNameTest.result[0]["NOME ACEITO"][0].family);
-    expect(result.result[0]["NOME ACEITO"][0].genus).toBe(taxonNameTest.result[0]["NOME ACEITO"][0].genus);
-    expect(result.result[0]["NOME ACEITO"][0].scientificname).toBe(taxonNameTest.result[0]["NOME ACEITO"][0].scientificname);
-    expect(result.result[0]["NOME ACEITO"][0].specificepithet).toBe(taxonNameTest.result[0]["NOME ACEITO"][0].specificepithet);
-    expect(result.result[0]["NOME ACEITO"][0].infraspecificepithet).toBe(taxonNameTest.result[0]["NOME ACEITO"][0].infraspecificepithet);
-    expect(result.result[0]["NOME ACEITO"][0].scientificnameauthorship).toBe(taxonNameTest.result[0]["NOME ACEITO"][0].scientificnameauthorship);
-    expect(result.result[0]["NOME ACEITO"][0].taxonomicstatus).toBe(taxonNameTest.result[0]["NOME ACEITO"][0].taxonomicstatus);
-    expect(result.result[0]["NOME ACEITO"][0].acceptednameusage).toBe(taxonNameTest.result[0]["NOME ACEITO"][0].acceptednameusage);
-    expect(result.result[0]["NOME ACEITO"][0].higherclassification).toBe(taxonNameTest.result[0]["NOME ACEITO"][0].higherclassification);
-
-    // nao fica exatamente o mesmo
-    //expect(result.result[0]["NOME ACEITO"][0].source).toBe(taxonNameTest.result[0]["NOME ACEITO"][0].source);
-
-    expect(result.result[0]["NOME ACEITO"][0].references).toBe(taxonNameTest.result[0]["NOME ACEITO"][0].references);
-
-    // verificação: NOME ACEITO 2 dev/#16
-    expect(result.result[1]["NOME ACEITO"][0].taxonid).toBe(taxonNameTest.result[1]["NOME ACEITO"][0].taxonid);
-    expect(result.result[1]["NOME ACEITO"][0].family).toBe(taxonNameTest.result[1]["NOME ACEITO"][0].family);
-    expect(result.result[1]["NOME ACEITO"][0].genus).toBe(taxonNameTest.result[1]["NOME ACEITO"][0].genus);
-    expect(result.result[1]["NOME ACEITO"][0].scientificname).toBe(taxonNameTest.result[1]["NOME ACEITO"][0].scientificname);
-    expect(result.result[1]["NOME ACEITO"][0].specificepithet).toBe(taxonNameTest.result[1]["NOME ACEITO"][0].specificepithet);
-    expect(result.result[1]["NOME ACEITO"][0].infraspecificepithet).toBe(taxonNameTest.result[1]["NOME ACEITO"][0].infraspecificepithet);
-    expect(result.result[1]["NOME ACEITO"][0].scientificnameauthorship).toBe(taxonNameTest.result[1]["NOME ACEITO"][0].scientificnameauthorship);
-    expect(result.result[1]["NOME ACEITO"][0].taxonomicstatus).toBe(taxonNameTest.result[1]["NOME ACEITO"][0].taxonomicstatus);
-    expect(result.result[1]["NOME ACEITO"][0].acceptednameusage).toBe(taxonNameTest.result[1]["NOME ACEITO"][0].acceptednameusage);
-    expect(result.result[1]["NOME ACEITO"][0].higherclassification).toBe(taxonNameTest.result[1]["NOME ACEITO"][0].higherclassification);
-
-    // nao fica exatamente o mesmo
-    //expect(result.result[1]["NOME ACEITO"][0].source).toBe(taxonNameTest.result[0]["NOME ACEITO"][1].source);
-
-    expect(result.result[1]["NOME ACEITO"][0].references).toBe(taxonNameTest.result[1]["NOME ACEITO"][0].references);
-
-    // verificação: RESULT 1
-    expect(result.result[0].taxonid).toBe(taxonNameTest.result[0].taxonid);
-    expect(result.result[0].family).toBe(taxonNameTest.result[0].family);
-    expect(result.result[0].genus).toBe(taxonNameTest.result[0].genus);
-    expect(result.result[0].scientificname).toBe(taxonNameTest.result[0].scientificname);
-    expect(result.result[0].specificepithet).toBe(taxonNameTest.result[0].specificepithet);
-    expect(result.result[0].infraspecificepithet).toBe(taxonNameTest.result[0].infraspecificepithet);
-    expect(result.result[0].scientificnameauthorship).toBe(taxonNameTest.result[0].scientificnameauthorship);
-    expect(result.result[0].taxonomicstatus).toBe(taxonNameTest.result[0].taxonomicstatus);
-    expect(result.result[0].acceptednameusage).toBe(taxonNameTest.result[0].acceptednameusage);
-    expect(result.result[0].higherclassification).toBe(taxonNameTest.result[0].higherclassification);
-
-    // os dados copia nao ficam exatamente iguais
-    //expect(result.result[0].source).toBe(taxonNameTest.result[0].source);
-
-    expect(result.result[0].references).toBe(taxonNameTest.result[0].references);
-    expect(result.result[0].acceptednameusageid).toBe(taxonNameTest.result[0].acceptednameusageid);
-    expect(result.result[0].modified).toBe(taxonNameTest.result[0].modified);
-
-    // verificação: RESULT 2
-    expect(result.result[1].taxonid).toBe(taxonNameTest.result[1].taxonid);
-    expect(result.result[1].family).toBe(taxonNameTest.result[1].family);
-    expect(result.result[1].genus).toBe(taxonNameTest.result[1].genus);
-    expect(result.result[1].scientificname).toBe(taxonNameTest.result[1].scientificname);
-    expect(result.result[1].specificepithet).toBe(taxonNameTest.result[1].specificepithet);
-    expect(result.result[1].infraspecificepithet).toBe(taxonNameTest.result[1].infraspecificepithet);
-    expect(result.result[1].scientificnameauthorship).toBe(taxonNameTest.result[1].scientificnameauthorship);
-    expect(result.result[1].taxonomicstatus).toBe(taxonNameTest.result[1].taxonomicstatus);
-    expect(result.result[1].acceptednameusage).toBe(taxonNameTest.result[1].acceptednameusage);
-    expect(result.result[1].higherclassification).toBe(taxonNameTest.result[1].higherclassification);
-
-    // os dados copia nao ficam exatamente iguais
-    //expect(result.result[1].source).toBe(taxonNameTest.result[1].source);
-
-    expect(result.result[1].references).toBe(taxonNameTest.result[1].references);
-    expect(result.result[1].acceptednameusageid).toBe(taxonNameTest.result[1].acceptednameusageid);
-    expect(result.result[1].modified).toBe(taxonNameTest.result[1].modified);
+    expect(result).toStrictEqual(taxonNameTest);
 });
 
 let taxonNameNull = {
-    result: null,
+    values: []
 };
 
 test('Teste pesquisando com a api com o nome cientifico: null', async () => {
     // primeiro busco pelo termo: null para comparar com os resultados esperados
-    const result = await searchSpecies(null);
+    const result = await getTaxon(null);
 
     // verificação: result
-    expect(result.result).toBe(taxonNameNull.result);
+    expect(result).toStrictEqual(taxonNameNull);
 });
-
-let taxonNameEmpty = {
-    result: null,
-};
 
 test('Teste pesquisando com a api com o nome cientifico: null', async () => {
     try {
         // primeiro busco pelo termo: null para comparar com os resultados esperados
-        const result = await searchSpecies('');
+        const result = await getTaxon('');
 
     } catch (error) {
         // verificação da mensagem erro
@@ -176,60 +172,53 @@ test('Teste pesquisando com a api com o nome cientifico: null', async () => {
 });
 
 let taxonNameNumber = {
-    result: null,
+    values: []
 };
 
 test('Teste pesquisando com a api com o nome cientifico: 98', async () => {
-
-    // primeiro busco pelo termo: null para comparar com os resultados esperados
-    const result = await searchSpecies(98);
+    // primeiro busco pelo termo: 98 para comparar com os resultados esperados
+    const result = await getTaxon(98);
 
     // verificação: result
-    expect(result.result).toBe(taxonNameNumber.result);
+    expect(result).toStrictEqual(taxonNameNumber);
 });
 
 let taxonNameNumberLetter = {
-    sucess: true,
-    result: null,
-    status: 200
+    values: []
 };
 
 test(`Teste pesquisando com a api com o nome cientifico: 'A98A'`, async () => {
 
     // primeiro busco pelo termo: null para comparar com os resultados esperados
-    const result = await searchSpecies('A98A');
+    const result = await getTaxon('A98A');
 
     // verificação: result
-    expect(result.result).toBe(taxonNameNumberLetter.result);
+    expect(result).toStrictEqual(taxonNameNumberLetter);
 
 });
 
 let taxonNameSpecialLetter = {
-    result: null,
+    values: []
 };
 
 test(`Teste pesquisando com a api com o nome cientifico: ';'`, async () => {
-
     // primeiro busco pelo termo: ';' para comparar com os resultados esperados
-    const result = await searchSpecies(';');
+    const result = await getTaxon(';');
 
     // verificação: result
-    expect(result.result).toBe(taxonNameSpecialLetter.result);
+    expect(result).toStrictEqual(taxonNameSpecialLetter);
 
 });
 
 let taxonNameLarge = {
-    sucess: true,
-    result: null,
-    status: 200
+    values: []
 };
 
 test(`Teste pesquisando com a api com o nome cientifico: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis ultricies nisi, sed dignissim ante. Cras et molestie eros, in consectetur magna. Vivamus a dui quis lorem ullamcorper mollis. Duis condimentum libero sit amet laoreet varius. Nullam pharetra nunc a dolor feugiat sagittis. Maecenas pharetra, est sed eleifend eleifend, enim metus laoreet quam, quis vehicula libero mi sit amet augue. Maecenas ullamcorper justo vitae efficitur scelerisque. Pellentesque suscipit dignissim odio sed posuere.Integer pellentesque, velit vel tincidunt tristique, massa enim suscipit libero, eget bibendum sem est in tortor. Pellentesque sed nisl urna. Vivamus dictum risus a massa pharetra, dapibus tincidunt turpis rhoncus. Aenean elit mi, fermentum in nisl non, aliquet aliquet enim. Vestibulum aliquet, dolor ut ultricies dignissim, odio sem aliquam risus, in congue mi enim vel tellus. Vestibulum vehicula auctor hendrerit. Nam consequat mollis tellus sed lobortis.'`, async () => {
-
     // primeiro busco pelo termo: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis ultricies nisi, sed dignissim ante. Cras et molestie eros, in consectetur magna. Vivamus a dui quis lorem ullamcorper mollis. Duis condimentum libero sit amet laoreet varius. Nullam pharetra nunc a dolor feugiat sagittis. Maecenas pharetra, est sed eleifend eleifend, enim metus laoreet quam, quis vehicula libero mi sit amet augue. Maecenas ullamcorper justo vitae efficitur scelerisque. Pellentesque suscipit dignissim odio sed posuere.Integer pellentesque, velit vel tincidunt tristique, massa enim suscipit libero, eget bibendum sem est in tortor. Pellentesque sed nisl urna. Vivamus dictum risus a massa pharetra, dapibus tincidunt turpis rhoncus. Aenean elit mi, fermentum in nisl non, aliquet aliquet enim. Vestibulum aliquet, dolor ut ultricies dignissim, odio sem aliquam risus, in congue mi enim vel tellus. Vestibulum vehicula auctor hendrerit. Nam consequat mollis tellus sed lobortis.' para comparar com os resultados esperados
-    const result = await searchSpecies('Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis ultricies nisi, sed dignissim ante. Cras et molestie eros, in consectetur magna. Vivamus a dui quis lorem ullamcorper mollis. Duis condimentum libero sit amet laoreet varius. Nullam pharetra nunc a dolor feugiat sagittis. Maecenas pharetra, est sed eleifend eleifend, enim metus laoreet quam, quis vehicula libero mi sit amet augue. Maecenas ullamcorper justo vitae efficitur scelerisque. Pellentesque suscipit dignissim odio sed posuere.Integer pellentesque, velit vel tincidunt tristique, massa enim suscipit libero, eget bibendum sem est in tortor. Pellentesque sed nisl urna. Vivamus dictum risus a massa pharetra, dapibus tincidunt turpis rhoncus. Aenean elit mi, fermentum in nisl non, aliquet aliquet enim. Vestibulum aliquet, dolor ut ultricies dignissim, odio sem aliquam risus, in congue mi enim vel tellus. Vestibulum vehicula auctor hendrerit. Nam consequat mollis tellus sed lobortis.');
+    const result = await getTaxon('Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis ultricies nisi, sed dignissim ante. Cras et molestie eros, in consectetur magna. Vivamus a dui quis lorem ullamcorper mollis. Duis condimentum libero sit amet laoreet varius. Nullam pharetra nunc a dolor feugiat sagittis. Maecenas pharetra, est sed eleifend eleifend, enim metus laoreet quam, quis vehicula libero mi sit amet augue. Maecenas ullamcorper justo vitae efficitur scelerisque. Pellentesque suscipit dignissim odio sed posuere.Integer pellentesque, velit vel tincidunt tristique, massa enim suscipit libero, eget bibendum sem est in tortor. Pellentesque sed nisl urna. Vivamus dictum risus a massa pharetra, dapibus tincidunt turpis rhoncus. Aenean elit mi, fermentum in nisl non, aliquet aliquet enim. Vestibulum aliquet, dolor ut ultricies dignissim, odio sem aliquam risus, in congue mi enim vel tellus. Vestibulum vehicula auctor hendrerit. Nam consequat mollis tellus sed lobortis.');
 
     // verificação: result
-    expect(result.result).toBe(taxonNameLarge.result);
+    expect(result).toStrictEqual(taxonNameLarge);
 
 });
