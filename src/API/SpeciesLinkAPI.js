@@ -8,7 +8,7 @@ const getSearchSpecies = async (speciesName) => {
       return response.data;
     })
     .catch((err) => {
-      throw new Error('Erro!!');
+      throw new Error(err);
     });
 };
 
