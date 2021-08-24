@@ -1,12 +1,15 @@
-import axios from 'axios';
-import Papa from 'papaparse';
+import axios from "axios";
+import cheerio from "cheerio";
+import Papa from "papaparse";
 
 /**
  * Checks if given string is blank (empty or composed with only whitespaces)
  * @param  {String} str String to check
  * @returns {Boolean} Result of the check in boolean format
  */
-const isBlank = (str) => { return !str || /^\s*$/.test(str); };
+const isBlank = (str) => {
+  return !str || /^\s*$/.test(str);
+};
 
 /**
  * Get the search result of a plant species in a plain-text CSV table from the The Plant List website
@@ -15,7 +18,7 @@ const isBlank = (str) => { return !str || /^\s*$/.test(str); };
  */
 const getSearchSpeciesData = async (speciesName) => {
   return axios
-    .get('http://www.theplantlist.org/tpl1.1/search', {
+    .get("http://www.theplantlist.org/tpl1.1/search", {
       params: {
         q: speciesName,
         csv: true,
@@ -28,7 +31,7 @@ const getSearchSpeciesData = async (speciesName) => {
     .catch((error) => {
       if (error.response) {
         throw new Error(
-          `Website response error with status: ${error.response.status}`,
+          `Website response error with status: ${error.response.status}`
         );
       } else if (error.request) {
         throw new Error(`Website request error: ${error.request}`);
@@ -52,12 +55,54 @@ const parseSpeciesData = (sepeciesData) => {
     });
 
     if (Object.keys(parsed.errors).length !== 0) {
-      throw new Error('Incorrect CSV');
+      throw new Error("Incorrect CSV");
     } else {
       return parsed.data;
     }
   } catch (error) {
     throw new Error(`Parsing data error: ${error.message}`);
+  }
+};
+
+const getLegitimateSpeciesName = async (synonymSpeciesName) => {
+  try {
+    const synonymsHtmlPage = await axios.get(
+      "http://www.theplantlist.org/tpl1.1/search",
+      {
+        params: {
+          q: synonymSpeciesName,
+        },
+        timeout: 10000,
+      }
+    );
+
+    const $ = cheerio.load(synonymsHtmlPage.data);
+
+    let validSynonyms = {};
+    $(".names.results > tbody > tr > .name.Synonym").each((index, element) => {
+      if (!$(element).text().includes("[Illegitimate]")) {
+        validSynonyms = {
+          name: $(element).text(),
+          endpoint: $(element).children().attr("href"),
+        };
+      }
+    });
+
+    let acceptedNames = [];
+    for (const synonym of validSynonyms) {
+      const acceptedHtmlPage = await axios.get(
+        `http://www.theplantlist.org${synonym?.endpoint}`,
+        {
+          timeout: 10000,
+        }
+      );
+      const $ = cheerio.load(acceptedHtmlPage.data);
+      acceptedNames.push($("#columns .subtitle > a > .name").text());
+    }
+
+    return acceptedNames;
+  } catch (error) {
+    throw new Error(`Error in getting legitimate species name: ${error.message}`);
   }
 };
 
@@ -71,19 +116,25 @@ const searchSpecies = async (speciesName) => {
     try {
       const searchedData = await getSearchSpeciesData(speciesName);
       const parsedData = parseSpeciesData(searchedData);
+      const hasAcceptedName = parsedData.some(searchRow => searchRow['Taxonomic status in TPL'] === 'Accepted');
+
+      // if (!hasAcceptedName) {
+      //   const acceptedNames = await getLegitimateSpeciesName(speciesName);
+
+      // }
 
       const formattedSearch = parsedData.map((searchRow) => {
         return {
           name: [
             searchRow.Genus,
             searchRow.Species,
-            searchRow['Infraspecific rank'],
-            searchRow['Infraspecific epithet'],
+            searchRow["Infraspecific rank"],
+            searchRow["Infraspecific epithet"],
           ]
             .filter(Boolean)
-            .join(' '),
-          status: searchRow['Taxonomic status in TPL'],
-          confidencLevel: searchRow['Confidence level'],
+            .join(" "),
+          status: searchRow["Taxonomic status in TPL"],
+          confidencLevel: searchRow["Confidence level"],
           source: searchRow.Source,
         };
       });
@@ -92,7 +143,12 @@ const searchSpecies = async (speciesName) => {
     } catch (error) {
       throw new Error(error);
     }
-  } else throw new Error('A species name is required');
+  } else throw new Error("A species name is required");
 };
 
-export default searchSpecies;
+// export default searchSpecies;
+// searchSpecies("Pontederia azurea")
+
+// const a = await getLegitimateSpeciesName("Pontederia azurea");
+
+// console.log(a)
