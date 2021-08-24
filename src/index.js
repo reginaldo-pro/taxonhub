@@ -1,19 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import LoadableApp from "./LoadableApp";
+import Routes from './routes';
 
-
+const app = require('./pages/home');
 
 ReactDOM.render(
   <React.StrictMode>
-    <LoadableApp />
+    <Routes />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
-if (module.hot && process.env.NODE_ENV === "development") {
-  module.hot.accept("./LoadableApp", () => {
-    const NextApp = require("./LoadableApp").default;
-    ReactDOM.render(<NextApp />, document.getElementById('root'));    
+if (module.hot && process.env.NODE_ENV === 'development') {
+  module.hot.accept('./pages/home', () => {
+    const NextApp = app.default;
+    ReactDOM.render(<NextApp />, document.getElementById('root'));
   });
 }
