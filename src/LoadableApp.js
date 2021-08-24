@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import Loadable from "react-loadable";
 const LoadApp = Loadable({
-  //loader: () => import("./App"),
-  loader: () => import("./speciesLink/SpeciesLinkApi"),
+  loader: () => import("./App"),
   loading() {
     return <div>Loading...</div>;
   },

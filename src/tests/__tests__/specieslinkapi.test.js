@@ -7,7 +7,6 @@ describe('Função searchSpecies na classe SpeciesLinkAPI', () => {
     test('Tamanho do retorno maior que 1', async () => {
         let count = 0;
         const result = await SpeciesLinkAPI.searchSpecies('Taberna disparifolia');
-        console.log(result)
         count = Object.keys(result["result"]).length
         expect(count).toBeGreaterThan(1);
     });
