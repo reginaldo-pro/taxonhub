@@ -49,15 +49,12 @@
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/tests/__mocks__/fileMock.js",
       "\\.(css|less|scss|sass)$": "<rootDir>/src/tests/__mocks__/styleMock.js"
     },
-<<<<<<< HEAD
     "setupTestFrameworkScriptFile": "./__tests__/../setup.js",
-    "testEnvironment": "node"
-=======
+    "testEnvironment": "node",
     "automock": false,
     "setupFiles": [
       "./setupJest.js"
     ]
->>>>>>> 9a23f5f431eb5c1e71028d24211e261266615fde
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
