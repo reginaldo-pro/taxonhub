@@ -15,9 +15,9 @@ export async function searchSpeciesList(speciesList) {
           });
         } else {
           const APISpecieList = SpeciesLinkAPI.searchSpecies(especie); // retorna promisse
-          if (APISpecieList.length > 0) { // se a API retornar
-            APISpecieList.forEach((element) => {
-              arraySpecies.push(element);
+          if (Object.keys(APISpecieList.result).length > 0) { // se a API retornar
+            APISpecieList.result.forEach((element) => {
+              arraySpecies.push(element.scientificName);
             });
             SpeciesLinkCache.save(arraySpecies); // armazenar em cache
           }
