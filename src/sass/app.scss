@@ -1,12 +1,56 @@
 // src/sass/app.scss
-body{
-  margin: 0
+body {
+  margin: 0;
 }
-.App{
+.App {
   display: flex;
   flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  background: rgba(rgb(47, 93, 20), 0.2);
+  height: 100vh;
+}
+
+.speciesScreen {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  background: rgba(rgb(47, 93, 20), 0.2);
+  height: 100vh;
+}
+
+.speciesScreenTitle {
   justify-content: center;
-  align-items: center;
-  background: rgba(gray, 0.2);
-  height: 100vh
+}
+
+#menu ul {
+  padding: 0px;
+  margin: 0px;
+  background-color: #ededed;
+  list-style: none;
+  height: 30px;
+}
+
+#menu ul li {
+  display: inline;
+  height: 30px;
+}
+
+#menu ul li a {
+  padding: 2px 10px;
+  display: inline-block;
+  height: 30px;
+  /* visual do link */
+  background-color: #ededed;
+  color: #333;
+  text-decoration: none;
+  border-bottom: 3px solid #ededed;
+}
+
+#menu ul li a:hover {
+  background-color: #d6d6d6;
+  color: #6d6d6d;
+  height: 30px;
+  border-bottom: 3px solid #ea0000;
 }
