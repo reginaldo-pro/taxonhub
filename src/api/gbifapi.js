@@ -2,15 +2,11 @@ import 'regenerator-runtime/runtime'
 import axios from 'axios';
 axios.defaults.adapter = require('axios/lib/adapters/http')
 
-/**
- * GBIFApi
- * @param { String } speciesName: 
- */
 
-
-const getSearchSpecies = async (speciesName) => { 
+const getSearchSpecies = async (taxonKey) => { 
+  //console.log('key: ', taxonKey)
   return axios
-    .get('https://api.gbif.org/v1/occurrence/search' + {speciesName})
+    .get('https://api.gbif.org/v1/occurrence/search',{taxon_key: taxonKey})
     .then((response) => {
       return response.data;
     })
@@ -20,13 +16,13 @@ const getSearchSpecies = async (speciesName) => {
 };
 
 const searchSpecies = async (speciesName) => {
-  try {
-    const searchedData = await getSearchSpecies(speciesName);
-    return searchedData;
-
-  } catch (error) {
-    throw new Error(error);
-  }
+  axios.get(`https://api.gbif.org/v1/species/match?name=${speciesName}&strict=true`)
+    .then((response) => {
+      //console.log('Resultado:',response.data.usageKey)
+      getSearchSpecies(response.data.usageKey);
+    }).catch((error) => {
+      console.log(error);
+    });
 };
 
 export default {searchSpecies};
