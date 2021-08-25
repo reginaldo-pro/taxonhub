@@ -19,7 +19,7 @@ class App extends Component {
                 <nav id="menu">
                     <ul>
                         <li>
-                            <Link to="/species-validation">Ocorrências de especies</Link>
+                            <Link to="/species-validation">Validação de especies</Link>
                         </li>
                         <li>
                             <Link to="/species-ocurrence">Ocorrências de especies</Link>
