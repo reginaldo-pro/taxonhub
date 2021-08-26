@@ -2,15 +2,17 @@ import { validadeFile } from './fileUploader';
 
 function validateSpecies(filename) {
   // Iniciando validate species
-  validadeFile(filename)
-    .then((output) => {
-      // eslint-disable-next-line no-console
-      console.log(output);
-    })
-    .catch((erro) => {
-      // eslint-disable-next-line no-console
-      console.log(erro);
-    });
+
+  return new Promise((resolve, reject) => {
+    validadeFile(filename)
+      .then((output) => {
+        resolve(output)
+      })
+      .catch((error) => {
+        reject(error)
+      })
+  })
+
 }
 
 module.exports = { validateSpecies };
