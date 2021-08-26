@@ -2,18 +2,17 @@ import { validadeFile } from './fileUploader';
 
 function validateSpecies(filename) {
   // Iniciando validate species
-  
-  validadeFile(filename)
-    .then((output) => {
-      console.log("validado")
-      console.log(output)
-      return(output)
-    })
-    .catch((output) => {
-      console.log("nao validado")
-      console.log(output)
-      return output
-    })
+
+  return new Promise((resolve, reject) => {
+    validadeFile(filename)
+      .then((output) => {
+        resolve(output)
+      })
+      .catch((error) => {
+        reject(error)
+      })
+  })
+
 }
 
 module.exports = { validateSpecies };
