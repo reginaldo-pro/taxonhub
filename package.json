@@ -125,6 +125,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "@material-ui/core": "^4.12.3",
     "axios": "^0.21.1",
     "babel-polyfill": "^6.26.0",
     "electron-is-dev": "^1.1.0",
