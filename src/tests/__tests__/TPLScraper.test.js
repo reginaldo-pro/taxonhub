@@ -10,6 +10,16 @@ test('Testing a search for Eichhornia azurea species', async () => {
   );
 });
 
+test('Testing a search for a synonym species (Pontederia azurea)', async () => {
+  const result = await searchSpecies('Pontederia azurea');
+  expect(result).toEqual(
+    expect.arrayContaining([
+      expect.objectContaining({ name: 'Eichhornia azurea' }),
+      expect.objectContaining({ name: 'Eichhornia azurea var. rhizantha' }),
+    ]),
+  );
+});
+
 test('Testing a search for a nonexistent species', async () => {
   const result = await searchSpecies('Lorem ipsum');
   expect(result).toEqual([]);
