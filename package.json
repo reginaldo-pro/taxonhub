@@ -125,9 +125,12 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
     "axios": "^0.21.1",
     "babel-polyfill": "^6.26.0",
     "electron-is-dev": "^1.1.0",
+    "material-ui-dropzone": "^3.5.0",
     "papaparse": "^5.3.1",
     "promised-csv": "^1.0.1",
     "react": "^16.13.1",
