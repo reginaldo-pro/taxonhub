@@ -1,6 +1,6 @@
-import axios from "axios";
-import cheerio from "cheerio";
-import Papa from "papaparse";
+import axios from 'axios';
+import cheerio from 'cheerio';
+import Papa from 'papaparse';
 
 /**
  * Checks if given string is blank (empty or composed with only whitespaces)
@@ -18,7 +18,7 @@ const isBlank = (str) => {
  */
 const getSearchSpeciesData = async (speciesName) => {
   return axios
-    .get("http://www.theplantlist.org/tpl1.1/search", {
+    .get('http://www.theplantlist.org/tpl1.1/search', {
       params: {
         q: speciesName,
         csv: true,
@@ -31,7 +31,7 @@ const getSearchSpeciesData = async (speciesName) => {
     .catch((error) => {
       if (error.response) {
         throw new Error(
-          `Website response error with status: ${error.response.status}`
+          `Website response error with status: ${error.response.status}`,
         );
       } else if (error.request) {
         throw new Error(`Website request error: ${error.request}`);
@@ -55,7 +55,7 @@ const parseSpeciesData = (sepeciesData) => {
     });
 
     if (Object.keys(parsed.errors).length !== 0) {
-      throw new Error("Incorrect CSV");
+      throw new Error('Incorrect CSV');
     } else {
       return parsed.data;
     }
@@ -64,43 +64,45 @@ const parseSpeciesData = (sepeciesData) => {
   }
 };
 
+/**
+ * Returns an legitimate name for a synonym specpecies
+ * @param  {String} synonymSpeciesName Synonym of a plant species
+ * @returns {String} The accepted name for given synonym
+ */
 const getLegitimateSpeciesName = async (synonymSpeciesName) => {
   try {
     const synonymsHtmlPage = await axios.get(
-      "http://www.theplantlist.org/tpl1.1/search",
+      'http://www.theplantlist.org/tpl1.1/search',
       {
         params: {
           q: synonymSpeciesName,
         },
         timeout: 10000,
-      }
+      },
     );
 
-    const $ = cheerio.load(synonymsHtmlPage.data);
+    let $ = cheerio.load(synonymsHtmlPage.data);
 
-    let validSynonyms = {};
-    $(".names.results > tbody > tr > .name.Synonym").each((index, element) => {
-      if (!$(element).text().includes("[Illegitimate]")) {
-        validSynonyms = {
+    let validSynonym = {};
+    $('.names.results > tbody > tr > .name.Synonym').each((index, element) => {
+      if (!$(element).text().includes('[Illegitimate]')) {
+        validSynonym = {
           name: $(element).text(),
-          endpoint: $(element).children().attr("href"),
+          endpoint: $(element).children().attr('href'),
         };
       }
     });
 
-    let acceptedNames = [];
-    for (const synonym of validSynonyms) {
-      const acceptedHtmlPage = await axios.get(
-        `http://www.theplantlist.org${synonym?.endpoint}`,
-        {
-          timeout: 10000,
-        }
-      );
-      const $ = cheerio.load(acceptedHtmlPage.data);
-      acceptedNames.push($("#columns .subtitle > a > .name").text());
-    }
-
-    return acceptedNames;
+    const acceptedNameHtmlPage = await axios.get(
+      `http://www.theplantlist.org${validSynonym.endpoint}`,
+      {
+        timeout: 10000,
+      },
+    );
+    $ = cheerio.load(acceptedNameHtmlPage.data);
+    const acceptedName = $('#columns .subtitle > a > .name').text();
+    console.log(acceptedName)
+    return acceptedName;
   } catch (error) {
     throw new Error(`Error in getting legitimate species name: ${error.message}`);
   }
@@ -114,27 +116,32 @@ const getLegitimateSpeciesName = async (synonymSpeciesName) => {
 const searchSpecies = async (speciesName) => {
   if (!isBlank(speciesName)) {
     try {
-      const searchedData = await getSearchSpeciesData(speciesName);
-      const parsedData = parseSpeciesData(searchedData);
-      const hasAcceptedName = parsedData.some(searchRow => searchRow['Taxonomic status in TPL'] === 'Accepted');
+      let searchedData = await getSearchSpeciesData(speciesName);
+      let parsedData = parseSpeciesData(searchedData);  
+      // console.log(parsedData) 
+      const hasAcceptedName = parsedData.some((searchRow) => { return searchRow['Taxonomic status in TPL'] === 'Accepted'; });
 
-      // if (!hasAcceptedName) {
-      //   const acceptedNames = await getLegitimateSpeciesName(speciesName);
+      if (!hasAcceptedName & (parsedData.length > 0)) {
+        const acceptedName = await getLegitimateSpeciesName(speciesName);
 
-      // }
+        if (acceptedName) {
+          searchedData = await getSearchSpeciesData(acceptedName);
+          parsedData = parseSpeciesData(searchedData);
+        }
+      }
 
       const formattedSearch = parsedData.map((searchRow) => {
         return {
           name: [
             searchRow.Genus,
             searchRow.Species,
-            searchRow["Infraspecific rank"],
-            searchRow["Infraspecific epithet"],
+            searchRow['Infraspecific rank'],
+            searchRow['Infraspecific epithet'],
           ]
             .filter(Boolean)
-            .join(" "),
-          status: searchRow["Taxonomic status in TPL"],
-          confidencLevel: searchRow["Confidence level"],
+            .join(' '),
+          status: searchRow['Taxonomic status in TPL'],
+          confidencLevel: searchRow['Confidence level'],
           source: searchRow.Source,
         };
       });
@@ -143,12 +150,7 @@ const searchSpecies = async (speciesName) => {
     } catch (error) {
       throw new Error(error);
     }
-  } else throw new Error("A species name is required");
+  } else throw new Error('A species name is required');
 };
 
-// export default searchSpecies;
-// searchSpecies("Pontederia azurea")
-
-// const a = await getLegitimateSpeciesName("Pontederia azurea");
-
-// console.log(a)
+export default searchSpecies;
