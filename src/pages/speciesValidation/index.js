@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
 import '../../sass/app.scss';
+import {DropzoneArea} from 'material-ui-dropzone'
 
 import { Link } from 'react-router-dom';
 
@@ -18,7 +19,8 @@ class SpecieValidation extends Component {
         </nav>
 
         <div className="speciesScreenTitle">
-          <h1>Inclua o CSV a baixo para validar as especies:</h1>
+          <h1>Inclua o CSV pelo botão abaixo para validar as especies</h1>
+          <DropzoneArea />
         </div>
       </div>
     );
