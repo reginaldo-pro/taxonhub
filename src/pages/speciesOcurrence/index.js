@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 
 import { Link } from 'react-router-dom';
 // eslint-disable-next-line react/prefer-stateless-function
-class SpecieValidation extends Component {
+class SpeciesOcurrence extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -59,4 +59,4 @@ class SpecieValidation extends Component {
   }
 }
 
-export default hot(module)(SpecieValidation);
+export default hot(module)(SpeciesOcurrence);
