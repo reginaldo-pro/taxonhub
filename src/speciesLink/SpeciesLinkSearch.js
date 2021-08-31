@@ -1,5 +1,7 @@
-const SpeciesLinkAPI = require('./API/SpeciesLinkAPI')
-const SpeciesLinkCache = require('./Cache/SpeciesLinkCache')
+const SpeciesLinkAPI = require('../API/SpeciesLinkAPI');
+
+const SpeciesLinkCache = null;
+// require('./Cache/SpeciesLinkCache');
 
 let arraySpecies = [];
 
