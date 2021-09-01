@@ -1,44 +1,39 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
 import '../../sass/app.scss';
-import {DropzoneArea} from 'material-ui-dropzone'
+import { DropzoneArea } from 'material-ui-dropzone';
 import Button from '@material-ui/core/Button';
 
 import { Link } from 'react-router-dom';
 // eslint-disable-next-line react/prefer-stateless-function
 class SpecieValidation extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       files: [],
-      uploaded: false
+      uploaded: false,
     };
-
   }
-  handleChange(files){
-    console.log(files.length)
+
+  handleChange(files) {
+    console.log(files.length);
     this.setState({
-      files: files,
-      uploaded: files.length ? true : false
+      files,
+      uploaded: !!files.length,
     });
   }
-  removeCSV(){
+
+  removeCSV() {
     this.setState({
       files: [],
-      uploaded: false
-    })
+      uploaded: false,
+    });
   }
+
   render() {
-    console.log(this.state.uploaded)
+    console.log(this.state.uploaded);
     return (
       <div className="speciesScreen">
-        <nav id="menu">
-          <ul>
-            <li>
-              <Link to="/">Voltar ao menu principal</Link>
-            </li>
-          </ul>
-        </nav>
         <div className="speciesScreenTitle">
           {this.state.uploaded ? (
             <>
@@ -50,7 +45,7 @@ class SpecieValidation extends Component {
           ) : (
             <>
               <h1>Inclua o CSV abaixo para encontrar as Ocorrências das espécies</h1>
-              <DropzoneArea onChange={this.handleChange.bind(this)}/>
+              <DropzoneArea onChange={this.handleChange.bind(this)} />
             </>
           )}
         </div>
