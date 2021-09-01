@@ -12,9 +12,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>
+      Taxonhub
       {' '}
       {new Date().getFullYear()}
       .
@@ -25,9 +23,9 @@ function Copyright() {
 let theme = createTheme({
   palette: {
     primary: {
-      light: '#63ccff',
-      main: '#009be5',
-      dark: '#006db3',
+      light: '#479320',
+      main: '#479320',
+      dark: '#479320',
     },
   },
   typography: {
@@ -152,7 +150,7 @@ const styles = {
   },
   main: {
     flex: 1,
-    //    padding: theme.spacing(0, 0),
+    padding: theme.spacing(0.5, 0),
     background: '#eaeff1',
   },
   footer: {
