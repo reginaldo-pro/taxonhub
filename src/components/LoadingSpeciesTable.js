@@ -7,6 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles({
   table: {
@@ -37,6 +38,9 @@ export default function DenseTable() {
             <TableCell>ID </TableCell>
             <TableCell align="right">Nome do site</TableCell>
             <TableCell align="right">Progresso do Download </TableCell>
+            <TableCell>
+              Sinonimos
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -50,6 +54,11 @@ export default function DenseTable() {
                   {row.nome}
                 </TableCell>
                 <TableCell align="right">{row.progresso}</TableCell>
+                <TableCell>
+                <Button variant="contained" color="primary">
+                                Ver Sinonimos
+                              </Button>
+                </TableCell>
               </TableRow>
             );
           })}
