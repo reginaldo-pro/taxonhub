@@ -6,9 +6,6 @@ const useStyles = makeStyles((theme) => {
   return {
     root: {
       display: 'flex',
-      '& > * + *': {
-        marginLeft: theme.spacing(2),
-      },
     },
   };
 });

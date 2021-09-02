@@ -3,10 +3,8 @@ import { hot } from 'react-hot-loader';
 import '../../sass/app.scss';
 import { DropzoneArea } from 'material-ui-dropzone';
 import Button from '@material-ui/core/Button';
-
-import { Link } from 'react-router-dom';
-
 import CircularIndeterminate from '../../components/Loading';
+import LoadingSpeciesTable from '../../components/LoadingSpeciesTable';
 
 const delay = (ms) => { return new Promise((resolve) => { return setTimeout(resolve, ms); }); };
 // eslint-disable-next-line react/prefer-stateless-function
@@ -60,6 +58,10 @@ class SpecieValidation extends Component {
               <Button variant="contained" color="secondary" onClick={this.removeCSV.bind(this)}>
                 Remover
               </Button>
+              <div>
+                <LoadingSpeciesTable />
+              </div>
+
             </>
           ) : (
             <>

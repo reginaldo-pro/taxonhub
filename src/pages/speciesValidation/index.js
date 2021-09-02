@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import SpeciesLinkAPI from '../../API/SpeciesLinkAPI';
 
 import CircularIndeterminate from '../../components/Loading';
+import LoadingSpeciesTable from '../../components/LoadingSpeciesTable';
 
 const delay = (ms) => { return new Promise((resolve) => { return setTimeout(resolve, ms); }); };
 
@@ -70,6 +71,10 @@ class SpecieValidation extends Component {
               <Button variant="contained" color="secondary" onClick={this.removeCSV.bind(this)}>
                 Remover
               </Button>
+              <div>
+                <LoadingSpeciesTable />
+              </div>
+
             </>
           ) : (
             <>
