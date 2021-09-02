@@ -6,6 +6,8 @@ import Button from '@material-ui/core/Button';
 
 import { Link } from 'react-router-dom';
 
+import CircularIndeterminate from '../../components/Loading';
+
 const delay = (ms) => { return new Promise((resolve) => { return setTimeout(resolve, ms); }); };
 // eslint-disable-next-line react/prefer-stateless-function
 class SpecieValidation extends Component {
@@ -44,6 +46,14 @@ class SpecieValidation extends Component {
     return (
       <div className="speciesScreen">
         <div className="speciesScreenTitle">
+          {this.state.isLoading ? (
+            <>
+              <CircularIndeterminate />
+            </>
+          ) : (
+            <>
+            </>
+          )}
           {this.state.uploaded ? (
             <>
               <h1>Remova o CSV atual para utilizar outro</h1>

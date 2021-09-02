@@ -56,7 +56,7 @@ class SpecieValidation extends Component {
 
         <div className="speciesScreenTitle">
 
-          {this.state.isLoading && !this.state.uploaded ? (
+          {this.state.isLoading ? (
             <>
               <CircularIndeterminate />
             </>
