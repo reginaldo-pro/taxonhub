@@ -24,7 +24,7 @@ function createData(id, nome, progresso) {
 
 const rows = [
   createData(1, 'The plant list', '100%'),
-  createData(1, 'The plant list', '100%'),
+  createData(2, 'Flora do Brasil', '100%'),
 ];
 
 export default function DenseTable() {

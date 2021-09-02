@@ -58,7 +58,7 @@ class SpecieValidation extends Component {
               <Button variant="contained" color="secondary" onClick={this.removeCSV.bind(this)}>
                 Remover
               </Button>
-              <div>
+              <div class="SpeciesTable">
                 <LoadingSpeciesTable />
               </div>
 
