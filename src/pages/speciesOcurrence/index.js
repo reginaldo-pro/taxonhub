@@ -26,7 +26,7 @@ class SpecieValidation extends Component {
       uploaded: !!files.length,
       isLoading: true,
     });
-    await delay(5000);
+    await delay(1000);
     this.setState({
       files,
       uploaded: !!files.length,
