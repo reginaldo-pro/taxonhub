@@ -26,7 +26,7 @@ export default function ResponsiveDialog() {
     <div>
     
       <Button variant="contained" color="primary" onClick={handleClickOpen}>
-                                Ver Sinonimos
+                                Ver Detalhes
                               </Button>
       <Dialog
         fullScreen={fullScreen}
@@ -34,7 +34,7 @@ export default function ResponsiveDialog() {
         onClose={handleClose}
         aria-labelledby="responsive-dialog-title"
       >
-        <DialogTitle id="responsive-dialog-title">{"Lista de sinonimos"}</DialogTitle>
+        <DialogTitle id="responsive-dialog-title">{"Detalhes"}</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Lista de Sinonimos
