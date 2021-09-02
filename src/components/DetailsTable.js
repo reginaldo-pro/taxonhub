@@ -15,15 +15,14 @@ const useStyles = makeStyles({
   },
 });
 
-function createData(id, nome, progresso) {
+function createData(nomePesquisado, nomeEncontrado, nomeAceito, statusTaxonomico, familiaSinonimos, formaVida, substrato, grupoTaxonomico, origem, endemismo, distribuicao, possivelDistribuicao, dominioFitogeografico, vegetacao) {
   return {
-    id, nome, progresso,
+    nomePesquisado, nomeEncontrado, nomeAceito, statusTaxonomico, familiaSinonimos, formaVida, substrato, grupoTaxonomico, origem, endemismo, distribuicao, possivelDistribuicao, dominioFitogeografico, vegetacao,
   };
 }
 
 const rows = [
-  createData(1, 'The plant list', '100%'),
-  createData(2, 'Flora do Brasil', '100%'),
+  createData('', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 ];
 
 export default function DenseTable() {
@@ -34,9 +33,20 @@ export default function DenseTable() {
       <Table className={classes.table} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
-            <TableCell>ID </TableCell>
-            <TableCell align="right">Nome do site</TableCell>
-            <TableCell align="right">Progresso do Download </TableCell>
+            <TableCell>Nome Pesquisado</TableCell>
+            <TableCell align="right">Nome Encontrado</TableCell>
+            <TableCell align="right">Nome Aceito</TableCell>
+            <TableCell align="right">Status Taxonômico</TableCell>
+            <TableCell align="right">Família e Sinônimos</TableCell>
+            <TableCell align="right">Forma de Vida</TableCell>
+            <TableCell align="right">Substrato</TableCell>
+            <TableCell align="right">Grupo Taxonômico</TableCell>
+            <TableCell align="right">Origem</TableCell>
+            <TableCell align="right">Endemismo</TableCell>
+            <TableCell align="right">Distribuição</TableCell>
+            <TableCell align="right">Possível Distribuição</TableCell>
+            <TableCell align="right">Domínio Fitogeográfico</TableCell>
+            <TableCell align="right">Vegetação</TableCell>
             <TableCell>
               Sinonimos
             </TableCell>
@@ -47,14 +57,46 @@ export default function DenseTable() {
             return (
               <TableRow key={row.id}>
                 <TableCell component="th" scope="row">
-                  {row.id}
+                  {row.nomePesquisado}
                 </TableCell>
                 <TableCell component="th" scope="row">
-                  {row.nome}
+                  {row.nomeEncontrado}
                 </TableCell>
-                <TableCell align="right">{row.progresso}</TableCell>
-                <TableCell>
-                  Texto
+                <TableCell component="th" scope="row">
+                  {row.nomeAceito}
+                </TableCell>
+                <TableCell component="th" scope="row">
+                  {row.statusTaxonomico}
+                </TableCell>
+                <TableCell component="th" scope="row">
+                  {row.familiaSinonimos}
+                </TableCell>
+                <TableCell component="th" scope="row">
+                  {row.formaVida}
+                </TableCell>
+                <TableCell component="th" scope="row">
+                  {row.substrato}
+                </TableCell>
+                <TableCell component="th" scope="row">
+                  {row.grupoTaxonomico}
+                </TableCell>
+                <TableCell component="th" scope="row">
+                  {row.origem}
+                </TableCell>
+                <TableCell component="th" scope="row">
+                  {row.endemismo}
+                </TableCell>
+                <TableCell component="th" scope="row">
+                  {row.distribuicao}
+                </TableCell>
+                <TableCell component="th" scope="row">
+                  {row.possivelDistribuicao}
+                </TableCell>
+                <TableCell component="th" scope="row">
+                  {row.dominioFitogeografico}
+                </TableCell>
+                <TableCell component="th" scope="row">
+                  {row.vegetacao}
                 </TableCell>
               </TableRow>
             );
