@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
+import SwipeableViews from 'react-swipeable-views';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import SpeciesOcurrence from '../speciesOcurrence';
 import SpeciesValidation from '../speciesValidation';
-import SpeciesOccurence from '../speciesOcurrence';
 
 function TabPanel(props) {
   const {
@@ -18,8 +19,8 @@ function TabPanel(props) {
     <div
       role="tabpanel"
       hidden={value !== index}
-      id={`nav-tabpanel-${index}`}
-      aria-labelledby={`nav-tab-${index}`}
+      id={`full-width-tabpanel-${index}`}
+      aria-labelledby={`full-width-tab-${index}`}
       {...other}
     >
       {value === index && (
@@ -39,58 +40,60 @@ TabPanel.propTypes = {
 
 function a11yProps(index) {
   return {
-    id: `nav-tab-${index}`,
-    'aria-controls': `nav-tabpanel-${index}`,
+    id: `full-width-tab-${index}`,
+    'aria-controls': `full-width-tabpanel-${index}`,
   };
-}
-
-function LinkTab(props) {
-  return (
-    <Tab
-      component="a"
-      onClick={(event) => {
-        event.preventDefault();
-      }}
-      {...props}
-    />
-  );
 }
 
 const useStyles = makeStyles((theme) => {
   return {
     root: {
       backgroundColor: theme.palette.background.paper,
+      minWidth: 500,
     },
   };
 });
 
-export default function NavTabs() {
+export default function FullWidthTabs(props) {
   const classes = useStyles();
+  const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
+  const handleChangeIndex = (index) => {
+    setValue(index);
+  };
+
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" color="default">
         <Tabs
-          variant="fullWidth"
           value={value}
           onChange={handleChange}
-          aria-label="nav tabs example"
+          indicatorColor="primary"
+          textColor="primary"
+          variant="fullWidth"
+          aria-label="full width tabs example"
         >
-          <LinkTab label="Validar espécies" href="/species-validation" {...a11yProps(0)} />
-          <LinkTab label="Ocorrências de espécies" href="/species-occurrence" {...a11yProps(1)} />
+          <Tab label="Validar espécies" {...a11yProps(0)} />
+          <Tab label="Encontrar ocorrências" {...a11yProps(1)} />
         </Tabs>
       </AppBar>
-      <TabPanel value={value} index={0}>
-        <SpeciesValidation />
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        <SpeciesOccurence />
-      </TabPanel>
+      <SwipeableViews
+        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+        index={value}
+        onChangeIndex={handleChangeIndex}
+      >
+        <TabPanel value={value} index={0} dir={theme.direction}>
+          <SpeciesValidation />
+        </TabPanel>
+        <TabPanel value={value} index={1} dir={theme.direction}>
+          <SpeciesOcurrence />
+        </TabPanel>
+      </SwipeableViews>
     </div>
   );
 }
