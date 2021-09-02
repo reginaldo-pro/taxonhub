@@ -6,6 +6,10 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import SpeciesLinkAPI from '../../API/SpeciesLinkAPI';
 
+import CircularIndeterminate from '../../components/Loading';
+
+const delay = (ms) => { return new Promise((resolve) => { return setTimeout(resolve, ms); }); };
+
 // eslint-disable-next-line react/prefer-stateless-function
 class SpecieValidation extends Component {
   constructor(props) {
@@ -13,6 +17,7 @@ class SpecieValidation extends Component {
     this.state = {
       files: [],
       uploaded: false,
+      isLoading: false,
     };
   }
 
@@ -20,6 +25,13 @@ class SpecieValidation extends Component {
     this.setState({
       files,
       uploaded: !!files.length,
+      isLoading: true,
+    });
+    await delay(5000);
+    this.setState({
+      files,
+      uploaded: !!files.length,
+      isLoading: false,
     });
 
     files.forEach((file) => {
@@ -43,7 +55,16 @@ class SpecieValidation extends Component {
       <div className="speciesScreen">
 
         <div className="speciesScreenTitle">
-          {this.state.uploaded ? (
+
+          {this.state.isLoading && !this.state.uploaded ? (
+            <>
+              <CircularIndeterminate />
+            </>
+          ) : (
+            <>
+            </>
+          )}
+          {this.state.uploaded && !this.state.isLoading ? (
             <>
               <h1>Remova o CSV atual para utilizar outro</h1>
               <Button variant="contained" color="secondary" onClick={this.removeCSV.bind(this)}>
@@ -56,6 +77,7 @@ class SpecieValidation extends Component {
               <DropzoneArea onChange={this.handleChange.bind(this)} />
             </>
           )}
+
         </div>
       </div>
     );

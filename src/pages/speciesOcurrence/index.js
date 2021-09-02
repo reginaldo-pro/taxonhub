@@ -5,6 +5,8 @@ import { DropzoneArea } from 'material-ui-dropzone';
 import Button from '@material-ui/core/Button';
 
 import { Link } from 'react-router-dom';
+
+const delay = (ms) => { return new Promise((resolve) => { return setTimeout(resolve, ms); }); };
 // eslint-disable-next-line react/prefer-stateless-function
 class SpecieValidation extends Component {
   constructor(props) {
@@ -12,14 +14,21 @@ class SpecieValidation extends Component {
     this.state = {
       files: [],
       uploaded: false,
+      isLoading: false,
     };
   }
 
-  handleChange(files) {
-    console.log(files.length);
+  async handleChange(files) {
     this.setState({
       files,
       uploaded: !!files.length,
+      isLoading: true,
+    });
+    await delay(5000);
+    this.setState({
+      files,
+      uploaded: !!files.length,
+      isLoading: false,
     });
   }
 
