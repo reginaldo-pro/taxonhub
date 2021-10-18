@@ -12,9 +12,9 @@ O projeto será considerado um sucesso se atender aos seguintes objetivos:
 - O software desenvolvido ser capaz de coletar dados de inventário pelo menos dos sites "GBIF - Global Biodiversity Information Facility" e SpeciesLilnk.
 # Fases e principais entregas
 
-Haverá duas entregas (*releases*) que deverão passar pelos critérios de aceitação:
-- 24/07/2021
-- 21/08/2021
+Haverá XXX entregas (*releases*) que deverão passar pelos critérios de aceitação:
+- ???
+- ???
 
 # Produtos esperados
 
